@@ -1,0 +1,74 @@
+<header class="border-bottom bg-header">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <% if admin_signed_in? %>
+        <a class="col navbar-brand" href="/admin"><span>B-match</span></a>
+      <% else %>
+        <a class="col navbar-brand" href="/"><span>B-match</span></a>
+      <% end %>
+      
+      <% if user_signed_in? %>
+        <p class="col mb-0">ようこそ<%= current_user.name %>さん</p>
+      <% end %>
+
+      <div class="d-flex flex-column mt-2">
+        <button class="col-3 align-self-center navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+          <!--一般会員ログイン時ヘッダーメニュー-->
+          <% if user_signed_in? %>
+            <li class="text-center mx-2">
+              <%= link_to "マイページ", root_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+            </li>
+            <li class="text-center mx-2">
+              <%= link_to "投稿一覧", root_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+            </li>
+            <li class="text-center mx-2">
+              <%= link_to "　", root_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+            </li>
+            <li class="text-center mx-2">
+              <%= link_to "ログアウト", destroy_user_session_path,method: :delete,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+            </li>
+            
+          <!--管理者ログイン時ヘッダーメニュー-->
+          <% elsif admin_signed_in? %>
+            <li class="text-center mx-2">
+              <%= link_to "投稿一覧", root_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+            </li>
+            <li class="text-center mx-2">
+              <%= link_to "会員一覧", root_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+            </li>
+            <li class="text-center mx-2">
+              <%= link_to "履歴一覧", root_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+            </li>
+            <li class="text-center mx-2">
+              <%= link_to "エリア一覧", root_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+            </li>
+            <li class="text-center mx-2">
+              <%= link_to "ログアウト", destroy_admin_session_path,method: :delete,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+            </li>
+          
+          <!--非ログイン時ヘッダーメニュー-->
+          <% else %>
+            <li class="text-center mx-2">
+              <%= link_to "About",  root_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+            </li>
+            <li class="text-center mx-2">
+              <%= link_to "投稿一覧", root_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+            </li>
+            <li class="text-center mx-2">
+              <%= link_to "新規登録", new_user_registration_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+            </li>
+            <li class="text-center mx-2">
+              <%= link_to "ログイン", new_user_session_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
