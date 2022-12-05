@@ -1,0 +1,2 @@
+class Recruiting < ApplicationRecord
+end
