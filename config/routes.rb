@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   # 管理側
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
-    resources :prefectures, only: [:index, :create, :edit, :update]
+    resources :prefectures, only: [:index, :create, :edit, :update, :destroy]
     resources :recruitings, only: [:index, :show, :edit, :update, :destroy]
   end
   

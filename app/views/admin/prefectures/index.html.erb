@@ -1,0 +1,35 @@
+<div class='container'>
+  <div class='row'>
+    <p>こちらに県名やオンラインサービス名を入力、追加して下さい。</br>
+    会員は、下記の一覧の中から、行動範囲を選択する事ができるようになります。</p>
+  </div>
+  
+  <div class='row'>
+    <div class='col'>
+      <%= render 'form', prefecture: @prefecture %>
+    </div>
+  </div>
+  
+  <div class='row'>
+    <h3><< エリア一覧 >></h3>
+  </div>
+  
+  <div class='row'>
+    <table>
+      <thead>
+        <th>エリア名</th>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% @prefectures.each do |prefecture| %>
+          <tr>
+            <td><%= prefecture.name %></td>
+            <td><%= link_to "編集", edit_admin_prefecture_path(prefecture), class: "btn btn-sm btn-success" %></td>
+            <td><%= link_to "削除", admin_prefecture_path(prefecture), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
