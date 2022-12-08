@@ -6,7 +6,8 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])    
+    @user = User.find(params[:id])
+    @areas = current_user.areas.all
   end
 
   def edit
