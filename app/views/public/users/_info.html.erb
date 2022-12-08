@@ -1,8 +1,8 @@
-
+  <%= image_tag user.profile_image, size:'50x50' %>
   <%= user.name %>
   <%= user.introduction %>
   <%= user.email %>
-  <!--%= image_tag user.get_profile_image, size:'100x100' %>-->
+
   
   <% areas.each do |area| %>
     <%= area.prefecture.name %>
