@@ -1,27 +1,18 @@
-<%= user.name %>
-<%= user.introduction %>
-<%= user.email %>
-<%= image_tag user.get_profile_image, size:'100x100' %>
 
-<% areas.each do |area| %>
-<%= area.prefecture.name %>
-<% end %>
-<!--follows-->
-<!--%= link_to user.followings.count, user_followings_path(user) %>-->
-<!--followers-->
-<!--%= link_to user.followers.count, user_followers_path(user) %>-->
-      
-    
-<div class='row'>
-  <% if current_user = user %>
-    <%= link_to "プロフィール編集" edit_user_path(user), class: "btn btn-info" %>
+  <%= user.name %>
+  <%= user.introduction %>
+  <%= user.email %>
+  <!--%= image_tag user.get_profile_image, size:'100x100' %>-->
+  
+  <% areas.each do |area| %>
+    <%= area.prefecture.name %>
   <% end %>
-</div>
+  <!--follows-->
+  <!--%= link_to user.followings.count, user_followings_path(user) %>-->
+  <!--followers-->
+  <!--%= link_to user.followers.count, user_followers_path(user) %>-->
 
-<div class='row'>
 
-募集一覧
-<% user.recruitings.each do |recruiting| %>
- 
-<% end %>
-</div>
+  <% if current_user = user %>
+    <%= link_to "プロフィール編集", edit_user_path(user), class: "btn btn-info" %>
+  <% end %>
