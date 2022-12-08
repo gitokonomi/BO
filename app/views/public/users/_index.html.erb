@@ -1,0 +1,24 @@
+<table border="1" height="100">
+
+  <thead>
+    <tr>
+      <td></td>
+      <th>ユーザーネーム</th>
+      <th>プロフィール</th>
+      <th>募集数</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+    <% users.each do |user| %>
+      <td><% image_tag user.get_profile_image(100,100) %></td>
+      <td><% user.name %></td>
+      <td><% "user.introduction".truncate(33) %></td>
+      <td><%= user.recruitings.where(is_matched: "false").count %> 件</td>
+    <% end %>
+    </tr>
+  </tbody>
+
+</table>
+
