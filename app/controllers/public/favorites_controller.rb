@@ -1,8 +1,8 @@
 class Public::FavoritesController < ApplicationController
   def create
     recruiting = Recruiting.find(params[:recruiting_id])
-    favorite = current_user.favorites.new(recruiting_id: recruiting.id)
-    favorite.save
+    @favorite = current_user.favorites.new(recruiting_id: recruiting.id)
+    @favorite.save
     redirect_to recruiting_path(recruiting)
   end
   
