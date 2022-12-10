@@ -1,7 +1,7 @@
-<h3>募集一覧</h3>
+<h3><<募集一覧>></h3>
 
-<table>
-  
+<table border="5">
+
   <thead>
     <tr>
       <td></td>
@@ -12,18 +12,22 @@
       <th>募集内容</th>
     </tr>
   </thead>
-  
+
   <tbody>
-    <tr>
-      <!--% image_tag user.get_profile_image %>-->
-      <% user.recruitings.each do |recruiting| %>
-        <% recruiting.title %>
-        <% recruiting.place %>
-        <% recruiting.date %>
-        <% recruiting.deadline %>
-        <% recruiting.bod %>
-      <% end %>
-    </tr>
+    <% recruitings.each do |recruiting| %>
+      <tr>
+        <td>
+          <%= link_to(recruiting.user) do %>
+            <%= image_tag recruiting.user.get_profile_image(100,100) %>
+          <% end %>
+        </td>
+        <td><%= link_to recruiting.title, user_path(recruiting.user) %></td>
+        <td><%= recruiting.prefecture.name %></td>
+        <td><%= recruiting.date %></td>
+        <td><%= recruiting.deadline %></td>
+        <td><%= recruiting.body %></td>
+      </tr>
+    <% end %>
   </tbody>
-  
+
 </table>
