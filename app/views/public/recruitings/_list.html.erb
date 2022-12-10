@@ -27,7 +27,7 @@
         <td><%= recruiting.date %></td>
         <td><%= recruiting.deadline %></td>
         <td><%= recruiting.body %></td>
-        <td><%= render "public/favorites/btn", recruiting: recruiting %></td>
+        <td class=<%= "favorite-" + recruiting.id.to_s %>><%= render "public/favorites/btn", recruiting: recruiting %></td>
       </tr>
     <% end %>
   </tbody>
