@@ -10,6 +10,7 @@
       <th>開催日時</th>
       <th>募集締切</th>
       <th>募集内容</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -26,6 +27,21 @@
         <td><%= recruiting.date %></td>
         <td><%= recruiting.deadline %></td>
         <td><%= recruiting.body %></td>
+        <td>
+                  <% if recruiting.favorited_by?(current_user) %>
+                    <p>
+                    <%= link_to recruiting_favorites_path(recruiting), method: :delete do %>
+                      ♥<%= recruiting.favorites.count %> いいね
+                    <% end %>
+                    </p>
+                  <% else %>
+                    <p>
+                    <%= link_to recruiting_favorites_path(recruiting), method: :post do %>
+                      ♡<%= recruiting.favorites.count %> いいね
+                    <% end %>
+                    </p>
+                <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
