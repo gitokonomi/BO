@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
@@ -23,17 +23,17 @@ Rails.application.routes.draw do
     resources :recruitings do
       resource :favorites, only: [:create, :destroy]
     end
-    resources :areas, only: [:index, :show, :edit, :update]
+    resources :areas, only: [:create, :index, :show, :edit, :update, :destroy]
   end
-  
-  
+
+
   # 管理側
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
     resources :prefectures, only: [:index, :create, :edit, :update, :destroy]
     resources :recruitings, only: [:index, :show, :edit, :update, :destroy]
   end
-  
-  
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

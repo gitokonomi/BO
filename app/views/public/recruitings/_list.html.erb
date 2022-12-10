@@ -1,0 +1,29 @@
+<h3>募集一覧</h3>
+
+<table>
+  
+  <thead>
+    <tr>
+      <td></td>
+      <th>タイトル</th>
+      <th>場所</th>
+      <th>開催日時</th>
+      <th>募集締切</th>
+      <th>募集内容</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr>
+      <!--% image_tag user.get_profile_image %>-->
+      <% user.recruitings.each do |recruiting| %>
+        <% recruiting.title %>
+        <% recruiting.place %>
+        <% recruiting.date %>
+        <% recruiting.deadline %>
+        <% recruiting.bod %>
+      <% end %>
+    </tr>
+  </tbody>
+  
+</table>

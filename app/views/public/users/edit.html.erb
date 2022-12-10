@@ -1,2 +1,54 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div class='container'>
+  
+  <div class='row'>
+    <div class ='col'>
+      <h2>マイページ編集</h2>
+      <%= form_with model:@user, local:true do |f| %>
+        <div class="form-group">
+          <%= f.label :ユーザーネーム %>
+          <%= f.text_field :name, class: "form-control name" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :メールアドレス %>
+          <%= f.text_field :email, class: "form-control email" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :プロフィール画像 %>
+          <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :自己紹介 %>
+          <%= f.text_area :introduction, class: "form-control introduction" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "変更を保存する", class: 'btn btn-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class ='col'>
+      <h3>登録中エリア一覧</h3>
+      <% if @areas.present? %>
+        <% @areas.each do |area| %>
+          <%= area.prefecture.name %>
+          <%= link_to "削除", area_path(area.id, area), method: :delete, class: "btn btn-danger" %>
+        <% end %>  
+      <% else %>
+        <p>現在登録がありません</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class="form-group">
+      <%= form_with model: @area, url: areas_path, method: :post do |f| %>
+        <p class="mt-5">こちらから登録エリアを追加できます</p>
+        <%= f.select :prefecture_id, options_from_collection_for_select(@prefectures, :id, :name), class: "form-control area" %>
+        <%= f.submit '追加', class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+  
+</div>
