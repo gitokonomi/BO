@@ -4,6 +4,8 @@
     <%= render 'info', {user: @user, areas: @areas} %>
   </div>
   
+  <p><%=link_to "興味あり募集", favorites_user_path(@user) %></p>
+  
   <div class='row'>  
     <%= render 'public/recruitings/list', recruitings: @user_recruitings %>
   </div>
