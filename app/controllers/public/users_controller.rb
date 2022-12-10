@@ -13,11 +13,11 @@ class Public::UsersController < ApplicationController
 
   def edit
     @prefectures = Prefecture.all
-    # @user = User.find(params[:id])
+    @area = Area
+    @areas = current_user.areas.all
   end
 
   def update
-    # @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "変更を保存しました。"
     else
