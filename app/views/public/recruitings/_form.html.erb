@@ -1,0 +1,32 @@
+<p>内容を入力して</br>募集してみよう！</p>
+<%= form_with model:recruiting, local:true do |f| %>
+  <div class="form-group">
+    <%= f.label :タイトル %>
+    <%= f.text_field :title, placeholder: "アクションゲーム会",class: 'form-control recruiting_title' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :エリア %>
+    <%= f.select :prefecture_id, options_from_collection_for_select(Prefecture.all, :id, :name), class: "form-control recruiting_prefecture" %>
+    <!--%= f.select :prefecture_id, options_from_collection_for_select(current_user.areas.all, :prefecture_id, :prefecture_id), class: "form-control recruiting_prefecture" %>-->
+  </div>
+  <div class="form-group">
+    <%= f.label :遊ぶ場所 %>
+    <%= f.text_field :place, placeholder: "カフェB-match",class: 'form-control recruitig_place' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :日程 %>
+    <%= f.datetime_field :date, class: 'form-control recruitig_date' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :内容 %>
+    <%= f.text_area :body, placeholder: "遊びたいゲーム等を入力", class: 'form-control recruitig_body' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :募集の締切 %>
+    <%= f.datetime_field :deadline, class: 'form-control recruitig_deadline' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "募集", class: 'btn btn-success' %>
+  </div>
+<% end %>

@@ -9,6 +9,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @areas = current_user.areas.all
+    @user_recruitings = @user.recruitings
   end
 
   def edit

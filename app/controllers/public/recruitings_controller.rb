@@ -6,9 +6,19 @@ class Public::RecruitingsController < ApplicationController
   end
   
   def create
+    @recruiting = Recruiting.new(recruiting_params)
+    @recruiting.user_id = current_user.id
+    if @recruiting.save
+      redirect_to recruitings_path, notice: "募集しました！"
+    else
+      @recruitings = Recruiting.all
+      render 'index'
+    end
   end
   
   def index
+    @recruiting = Recruiting.new
+    @recruitings = Recruiting.all
   end
   
   def show
@@ -28,7 +38,7 @@ class Public::RecruitingsController < ApplicationController
   private
 
   def recruiting_params
-    params.require(:recruiting).permit(:title,:date,:place,:deadline,:body)
+    params.require(:recruiting).permit(:title, :body, :prefecture_id, :place, :date, :deadline)
   end
 
   def ensure_correct_user
