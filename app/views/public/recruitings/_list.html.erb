@@ -10,6 +10,7 @@
       <th>開催日時</th>
       <th>募集締切</th>
       <th>募集内容</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -26,6 +27,7 @@
         <td><%= recruiting.date %></td>
         <td><%= recruiting.deadline %></td>
         <td><%= recruiting.body %></td>
+        <td class=<%= "favorite-" + recruiting.id.to_s %>><%= render "public/favorites/btn", recruiting: recruiting %></td>
       </tr>
     <% end %>
   </tbody>
