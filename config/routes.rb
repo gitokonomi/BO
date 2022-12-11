@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     end
     resources :recruitings do
       resource :favorites, only: [:create, :destroy]
+      resources :recruiting_comments, only: [:create, :destroy]
     end
     resources :areas, only: [:create, :index, :show, :edit, :update, :destroy]
   end

@@ -22,6 +22,8 @@ class Public::RecruitingsController < ApplicationController
   end
   
   def show
+    @recruiting = Recruiting.find(params[:id])
+    @recruiting_comment = RecruitingComment.new
   end
   
   def edit
