@@ -2,11 +2,12 @@ class SearchesController < ApplicationController
   def search
     @model = params[:model]
     @content = params[:content]
-    @method = params[:method]
     if @model == 'user'
-      @records = User.search_for(@content, @method)
-    else
-      @records = Recruiting.search_for(@content, @method)
+      @records = User.search_for(@content)
+    elsif @model == 'body'
+      @records = Recruiting.search_for(@content)
+    elsif @model == 'time'
+      @records = Recruiting.search_for_time(@content)
     end
   end
   

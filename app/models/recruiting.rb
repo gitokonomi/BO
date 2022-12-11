@@ -10,17 +10,13 @@ class Recruiting < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
   
+
+  def self.search_for(content)
+    Recruiting.where('title LIKE ? OR body LIKE ?', '%'+content+'%', '%'+content+'%')
+  end
   
-  def self.search_for(content, method)
-    if method == 'perfect'
-      Recruiting.where(title: content)
-    elsif method == 'forward'
-      Recruiting.where('title LIKE ?', content+'%')
-    elsif method == 'backward'
-      Recruiting.where('title LIKE ?', '%'+content)
-    else
-      Recruiting.where('title LIKE ?', '%'+content+'%')
-    end
+  def self.search_for_time(content)
+    Recruiting.where('date LIKE ?', '%'+content+'%')
   end
 
 end
