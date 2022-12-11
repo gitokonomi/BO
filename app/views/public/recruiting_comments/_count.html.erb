@@ -2,12 +2,12 @@
 
 <% if recruiting.recruiting_comments.present? %>
   <%= link_to recruiting_path(recruiting.id) do %>
-    <i class="fa-solid fa-comment" aria-hidden="true" style="color: green;"></i>
+    <i class="fa-solid fa-comment-dots" aria-hidden="true" style="color: green;"></i>
     <%= recruiting.recruiting_comments.count %> 
   <% end %>
 <% else %>
   <%= link_to recruiting_path(recruiting.id) do %>
-    <i class="fa-thin fa-comment" aria-hidden="true"></i>
+    <i class="fa-regular fa-comment" aria-hidden="true"></i>
     <%= recruiting.recruiting_comments.count %> 
   <% end %>
 <% end %>
