@@ -11,6 +11,7 @@
       <th>募集締切</th>
       <th>募集内容</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -28,6 +29,7 @@
         <td><%= recruiting.deadline %></td>
         <td><%= recruiting.body %></td>
         <td class=<%= "favorite-" + recruiting.id.to_s %>><%= render "public/favorites/btn", recruiting: recruiting %></td>
+        <td><%= render "public/recruiting_comments/count",recruiting: recruiting %></td>
       </tr>
     <% end %>
   </tbody>

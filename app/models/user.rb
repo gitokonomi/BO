@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :recruitings, dependent: :destroy
   has_many :areas, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :recruiting_comments, dependent: :destroy
 
 
   has_one_attached :profile_image
