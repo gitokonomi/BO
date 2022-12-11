@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     resources :recruitings, only: [:index, :show, :edit, :update, :destroy]
   end
 
-
+  get '/search', to: 'searches#search'
+  get '/search_tag', to: 'searches#search_tag'  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
