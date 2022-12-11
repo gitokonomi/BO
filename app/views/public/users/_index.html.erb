@@ -1,4 +1,4 @@
-<table border="1" height="100">
+<table border="5" height="100">
 
   <thead>
     <tr>
@@ -10,14 +10,18 @@
   </thead>
 
   <tbody>
-    <tr>
     <% users.each do |user| %>
-      <td><% image_tag user.get_profile_image(100,100) %></td>
-      <td><% user.name %></td>
-      <td><% user.introduction.truncate(33) %></td>
-      <td><%= user.recruitings.where(is_matched: "false").count %> 件</td>
+      <tr>
+        <td>
+          <%= link_to user_path(user) do %>
+            <%= image_tag user.get_profile_image(100,100) %>
+          <% end %>
+        </td>
+        <td><%= user.name %></td>
+        <td><%= user.introduction.truncate(53) %></td>
+        <td><%= user.recruitings.where(is_matched: "false").count %> 件</td>
+      </tr>
     <% end %>
-    </tr>
   </tbody>
 
 </table>
