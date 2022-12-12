@@ -1,7 +1,25 @@
-<% if @model == 'user' %>
-	<h3>"ユーザーの中から 「<%= @content %>」 を検索した結果"</h3>
-  <%= render 'public/users/index', users: @records %>
-<% elsif @model == 'recruiting' %>
-	<h3>"募集の中から 「<%= @content %>」 を検索した結果"</h3>
-  <%= render 'public/recruitings/list', recruitings: @records %>
-<% end %>
+<div class='container'>
+  <!--ユーザー検索-->
+  <% if @model == 'user' && @records.present? %>
+    <h3>"ユーザーの中から 「<%= @content %>」 を検索した結果"</h3>
+    <%= render 'public/users/index', users: @records %>
+  <% elsif @model == 'user' && @records.blank? %>
+    <h3>"検索しましたが、ユーザーの中に 「<%= @content %>」 はいませんでした"</h3>
+  
+  <!--募集タイトルと内容検索-->
+  <% elsif @model == 'body' && @records.present? %>
+    <h3>"募集から 「<%= @content %>」 を検索した結果"</h3>
+    <%= render 'public/recruitings/list', recruitings: @records %>
+  <% elsif @model == 'body' && @records.blank? %>
+    <h3>"検索しましたが、募集の中に 「<%= @content %>」 はありませんでした"</h3>  
+  
+  <!--募集時間検索-->
+  <!--% elsif @model == 'time' && @records.present? %>-->
+  <!--	<h3>"遊ぶ日時から 「%= @content %>」 を検索した結果"</h3>-->
+  <!--  %= render 'public/recruitings/list', recruitings: @records %>-->
+  <!--% elsif @model == 'time' && @records.blank? %>-->
+  <!--<h3>"検索しましたが、遊ぶ日に 「%= @content %>」 はありませんでした"</h3>  -->
+  
+  <% end %>
+  
+</div>
