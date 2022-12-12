@@ -1,0 +1,8 @@
+<div class='container'>
+  <!--エリア検索-->
+  <% if @records.present? %>
+    <h3>"募集の中から 「<%= @prefecturename %>」 を検索した結果"</h3>
+    <%= render 'public/recruitings/list', recruitings: @records %>
+  <% else %>
+    <h3>"検索しましたが、募集の中に 「<%= @content %>」 はありませんでした"</h3>
+  <% end %>

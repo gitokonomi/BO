@@ -15,8 +15,13 @@ class Recruiting < ApplicationRecord
     Recruiting.where('title LIKE ? OR body LIKE ?', '%'+content+'%', '%'+content+'%')
   end
   
-  def self.search_for_time(content)
-    Recruiting.where('date LIKE ?', '%'+content+'%')
+  # def self.search_for_time(content)
+  #   Recruiting.where('date LIKE ?', '%'+content+'%')
+  # end
+
+  def self.search_prefecture_for(content)
+    Recruiting.where(prefecture_id: content)
   end
+
 
 end

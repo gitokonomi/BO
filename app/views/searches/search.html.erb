@@ -14,11 +14,11 @@
     <h3>"検索しましたが、募集の中に 「<%= @content %>」 はありませんでした"</h3>  
   
   <!--募集時間検索-->
-  <% elsif @model == 'time' && @records.present? %>
-  	<h3>"遊ぶ日時から 「<%= @content %>」 を検索した結果"</h3>
-    <%= render 'public/recruitings/list', recruitings: @records %>
-  <% elsif @model == 'time' && @records.blank? %>
-  <h3>"検索しましたが、遊ぶ日に 「<%= @content %>」 はありませんでした"</h3>  
+  <!--% elsif @model == 'time' && @records.present? %>-->
+  <!--	<h3>"遊ぶ日時から 「%= @content %>」 を検索した結果"</h3>-->
+  <!--  %= render 'public/recruitings/list', recruitings: @records %>-->
+  <!--% elsif @model == 'time' && @records.blank? %>-->
+  <!--<h3>"検索しましたが、遊ぶ日に 「%= @content %>」 はありませんでした"</h3>  -->
   
   <% end %>
   

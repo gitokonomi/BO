@@ -39,6 +39,6 @@ Rails.application.routes.draw do
   end
 
   get '/search', to: 'searches#search'
-  get '/search_tag', to: 'searches#search_tag'  
+  get '/search_prefecture', to: 'searches#search_prefecture'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
