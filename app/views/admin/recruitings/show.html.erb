@@ -1,0 +1,54 @@
+<div class='container'>
+  <div class='row'>
+    <h3><<募集詳細>></h3>
+  </div>
+  
+  <div class='row'>
+    <table border="5">
+      <thead>
+        <tr>
+          <td></td>
+          <th>タイトル</th>
+          <th>場所</th>
+          <th>開催日時</th>
+          <th>募集締切</th>
+          <th>募集内容</th>
+          <th></th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <tr>
+          <td>
+            <%= link_to admin_user_path(@recruiting.user) do %>
+              <%= image_tag @recruiting.user.get_profile_image(100,100) %>
+            <% end %>
+          </td>
+          <td><%= link_to @recruiting.title, admin_user_path(@recruiting.user) %></td>
+          <td><%= @recruiting.prefecture.name %></td>
+          <td><%= @recruiting.date %></td>
+          <td><%= @recruiting.deadline %></td>
+          <td><%= @recruiting.body %></td>
+          <td><i class="fas fa-heart" aria-hidden="true"></i> <%= @recruiting.favorites.count %></td>
+          <td><i class="fa-regular fa-comment" aria-hidden="true"></i> <%= @recruiting.recruiting_comments.count %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    
+  <div class='row'>  
+    <% @recruiting.recruiting_comments.each do |recruiting_comment| %>
+      <p><%= image_tag recruiting_comment.user.get_profile_image(50,50) %></p>
+      <%= recruiting_comment.user.name %>
+      <%= recruiting_comment.created_at.strftime('%Y/%m/%d') %><%= recruiting_comment.comment %>
+      <%= link_to "削除", admin_recruiting_recruiting_comment_path(recruiting_comment.recruiting, recruiting_comment), method: :delete %>
+    <% end %>
+  </div>
+  
+  <div class='row'>
+    <%= form_with model: [@recruiting, @recruiting_comment] do |f| %>
+      <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+      <%= f.submit "送信する" %>
+    <% end %>
+  </div>          
+</div>

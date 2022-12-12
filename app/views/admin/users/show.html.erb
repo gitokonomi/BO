@@ -1,9 +1,11 @@
 <div class='container'>
+  
   <div class='row'>
-    <div class='col'>
-
-      <%= render 'public/info', users: @user %>
-
-    </div>
+    <%= render 'info', {user: @user, areas: @areas} %>
   </div>
+
+  <div class='row'>  
+    <%= render 'admin/recruitings/list', recruitings: @user_recruitings %>
+  </div>
+  
 </div>

@@ -8,14 +8,14 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @areas = current_user.areas.all
+    @areas = @user.areas.all
     @user_recruitings = @user.recruitings
   end
 
   def edit
     @prefectures = Prefecture.all
     @area = Area
-    @areas = current_user.areas.all
+    @areas = @user.areas.all
   end
 
   def update
@@ -35,6 +35,7 @@ class Public::UsersController < ApplicationController
 
 
 private
+
   def user_params
     params.require(:user).permit(:name, :email, :introduction, :profile_image)
   end

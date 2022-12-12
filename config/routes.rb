@@ -35,7 +35,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
     resources :prefectures, only: [:index, :create, :edit, :update, :destroy]
-    resources :recruitings, only: [:index, :show, :edit, :update, :destroy]
+    resources :recruitings, only: [:index, :show, :edit, :update, :destroy] do
+      resources :recruiting_comments, only: [:destroy]
+    end
   end
 
   get '/search', to: 'searches#search'
