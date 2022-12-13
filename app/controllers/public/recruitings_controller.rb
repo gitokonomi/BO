@@ -1,10 +1,11 @@
 class Public::RecruitingsController < ApplicationController
   before_action :authenticate_user!, only: [:new,:show,:edit]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  
+  before_action :ensure_guest_user, only: [:edit]
+
   def new
   end
-  
+
   def create
     @recruiting = Recruiting.new(recruiting_params)
     @recruiting.user_id = current_user.id
@@ -15,23 +16,23 @@ class Public::RecruitingsController < ApplicationController
       render 'index'
     end
   end
-  
+
   def index
     @recruiting = Recruiting.new
     @recruitings = Recruiting.all
   end
-  
+
   def show
     @recruiting = Recruiting.find(params[:id])
     @recruiting_comment = RecruitingComment.new
   end
-  
+
   def edit
   end
-  
+
   def update
   end
-  
+
   def destroy
   end
 
@@ -47,6 +48,13 @@ class Public::RecruitingsController < ApplicationController
     @recruiting = Recruiting.find(params[:id])
     unless @recruiting.user == current_user
       redirect_to root_path
+    end
+  end
+
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name == "guestuser"
+      redirect_to user_path(current_user) , notice: 'ゲストユーザーは募集編集は使用できません。'
     end
   end
 

@@ -2,7 +2,8 @@
   <div class='row'>
     <h3><<募集詳細>></h3>
   </div>
-  
+
+  <!----------------------募集詳細内容---------------------->  
   <div class='row'>
     <table border="5">
       <thead>
@@ -35,7 +36,8 @@
       </tbody>
     </table>
   </div>
-    
+
+  <!----------------------コメント一覧---------------------->    
   <div class='row'>  
     <% @recruiting.recruiting_comments.each do |recruiting_comment| %>
       <p><%= image_tag recruiting_comment.user.get_profile_image(50,50) %></p>
@@ -44,7 +46,8 @@
       <%= link_to "削除", admin_recruiting_recruiting_comment_path(recruiting_comment.recruiting, recruiting_comment), method: :delete %>
     <% end %>
   </div>
-  
+
+  <!----------------------コメント送信フォーム---------------------->  
   <div class='row'>
     <%= form_with model: [@recruiting, @recruiting_comment] do |f| %>
       <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
