@@ -31,9 +31,16 @@ class Public::RecruitingsController < ApplicationController
   end
 
   def update
+    if @recruiting.update(recruiting_params)
+      redirect_to recruiting_path(@recruiting), notice: "編集しました"
+    else
+      render "edit"
+    end
   end
 
   def destroy
+    @recruiting.destroy
+    redirect_to recruitings_path
   end
 
 
@@ -54,7 +61,7 @@ class Public::RecruitingsController < ApplicationController
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "guestuser"
-      redirect_to user_path(current_user) , notice: 'ゲストユーザーは募集編集は使用できません。'
+      redirect_to user_path(current_user) , notice: 'ゲストユーザーは募集編集はできません。'
     end
   end
 

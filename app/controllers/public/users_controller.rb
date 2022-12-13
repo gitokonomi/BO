@@ -51,7 +51,7 @@ private
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "guestuser"
-      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集機能は使用できません。'
+      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集はできません。'
     end
   end
 

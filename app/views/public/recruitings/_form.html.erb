@@ -22,11 +22,25 @@
     <%= f.text_area :body, placeholder: "遊びたいゲーム等を入力", class: 'form-control recruitig_body' %>
   </div>
   <div class="form-group">
-    <%= f.label :募集の締切 %>
+    <%= f.label :募集の締切日 %>
     <%= f.datetime_field :deadline, class: 'form-control recruitig_deadline' %>
   </div>
-
-  <div class="form-group">
+  
+  <!--editの場合のみマッチング完了フラグ操作-->
+  <% if recruiting.id.nil? %>
+    <div class="form-group">
     <%= f.submit "募集", class: 'btn btn-success' %>
-  </div>
+    </div>
+  <% else%>
+    <div class="form-group">
+      <%= f.label :マッチング完了？ %>
+      <!--%= f., class: 'form-control recruitig_is_matched' %>-->
+          <%= f.datetime_field :deadline, class: 'form-control recruitig_deadline' %>
+    </div>
+    <div class="form-group">
+    <%= f.submit "変更を保存する", class: 'btn btn-success' %>
+    </div>
+  <% end %>  
+
+
 <% end %>
