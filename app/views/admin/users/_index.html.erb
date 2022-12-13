@@ -19,7 +19,13 @@
           <% end %>
         </td>
         <td><%= user.name %></td>
-        <td><%= user.introduction.truncate(53) %></td>
+        <td>
+          <% if user.introduction.nil? %>
+            <%= user.introduction %>
+          <% else %>
+            <%= user.introduction.truncate(53) %>
+          <% end %>
+        </td>
         <td><%= user.recruitings.where(is_matched: "false").count %> 件</td>
         <td>
           <% if user.is_deleted == false %>

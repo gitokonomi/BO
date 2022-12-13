@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
   
+  # プロフィール画像取得
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.png')
@@ -20,9 +21,16 @@ class User < ApplicationRecord
       profile_image.variant(resize_to_limit: [width, height]).processed
   end
   
-  
+  # ユーザー検索
   def self.search_for(content)
     User.where('name LIKE ?', '%' + content + '%')
   end  
   
+  # ゲストログイン機能
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
 end
