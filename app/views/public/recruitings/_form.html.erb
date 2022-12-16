@@ -19,7 +19,7 @@
   </div>
   <div class="form-group">
     <%= f.label :内容 %>
-    <%= f.text_area :body, placeholder: "遊びたいゲーム等を入力", class: 'form-control recruitig_body' %>
+    <%= f.text_area :body, placeholder: "遊びたいゲームや募集人数を入力", class: 'form-control recruitig_body' %>
   </div>
   <div class="form-group">
     <%= f.label :募集の締切日 %>
@@ -31,11 +31,14 @@
     <div class="form-group">
     <%= f.submit "募集", class: 'btn btn-success' %>
     </div>
-  <% else%>
-    <div class="form-group">
-      <%= f.label :マッチング完了？ %>
-      <!--%= f., class: 'form-control recruitig_is_matched' %>-->
-          <%= f.datetime_field :deadline, class: 'form-control recruitig_deadline' %>
+  <% else %>
+    <div class="form-group switch">
+      <p>マッチング完了？</p>
+      <label class="switch__label">
+        <%= f.check_box :is_matched, :as => :boolean, class: "switch__input" %>
+        <span class="switch__content"></span>
+        <span class="switch__circle"></span>
+      </label>
     </div>
     <div class="form-group">
     <%= f.submit "変更を保存する", class: 'btn btn-success' %>

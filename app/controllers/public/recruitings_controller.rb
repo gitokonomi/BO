@@ -1,7 +1,6 @@
 class Public::RecruitingsController < ApplicationController
   before_action :authenticate_user!, only: [:new,:show,:edit]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  before_action :ensure_guest_user, only: [:edit]
 
   def new
   end
@@ -48,20 +47,13 @@ class Public::RecruitingsController < ApplicationController
   private
 
   def recruiting_params
-    params.require(:recruiting).permit(:title, :body, :prefecture_id, :place, :date, :deadline)
+    params.require(:recruiting).permit(:title, :body, :prefecture_id, :place, :date, :deadline, :is_matched)
   end
 
   def ensure_correct_user
     @recruiting = Recruiting.find(params[:id])
     unless @recruiting.user == current_user
-      redirect_to root_path
-    end
-  end
-
-  def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.name == "guestuser"
-      redirect_to user_path(current_user) , notice: 'ゲストユーザーは募集編集はできません。'
+      redirect_to root_path, notice: "投稿した本人しか編集できません。"
     end
   end
 
