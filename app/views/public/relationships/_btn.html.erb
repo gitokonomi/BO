@@ -1,0 +1,7 @@
+<% if current_user != user && current_user.name != "guestuser" %>
+  <% if current_user.following?(user) %>
+    <%= link_to "フォロー解除", user_relationships_path(user.id), data: { confirm: "フォローを解除して宜しいですか？" }, method: :delete, class: "btn btn-info" %>
+  <% else %>
+    <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-success" %>
+  <% end %>
+<% end %>

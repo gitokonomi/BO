@@ -4,10 +4,15 @@
     <%= render 'info', {user: @user, areas: @areas} %>
   </div>
   <% if @user.name != "guestuser" %>
-    <p><%=link_to "興味あり募集", favorites_user_path(@user) %></p>
-
+    <div class='row'>
+      <%=link_to "興味あり募集", favorites_user_path(@user) %>
+    </div>
+    <div class='row'>
+      <%= render 'public/relationships/btn', {user: @user} %>
+    </div>
     <div class='row'>  
       <%= render 'public/recruitings/list', recruitings: @user_recruitings %>
     </div>
   <% end %>
+  
 </div>

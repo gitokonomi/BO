@@ -8,7 +8,14 @@ class User < ApplicationRecord
   has_many :areas, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :recruiting_comments, dependent: :destroy
-
+  # ユーザーをフォローされる側の関係性
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  # 自分をフォローしている人
+  has_many :followers, through: :reverse_of_relationships, source: :follower
+    # 自分がフォローする側の関係性
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  # 自分がフォローしている人
+  has_many :followings, through: :relationships, source: :followed
 
   has_one_attached :profile_image
   
@@ -33,4 +40,19 @@ class User < ApplicationRecord
       user.name = "guestuser"
     end
   end
+  
+  # フォロー機能用
+  def follow(user)
+    relationships.create(followed_id: user.id)
+  end
+  
+  def unfollow(user)
+    relationships.find_by(followed_id: user.id).destroy
+  end
+
+  def following?(user)
+    followings.include?(user)
+  end
+  
+  
 end
