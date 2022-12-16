@@ -26,10 +26,11 @@
             <% end %>
           </td>
           <td><%= link_to @recruiting.title, user_path(@recruiting.user) %></td>
-          <td><%= @recruiting.prefecture.name %></td>
+          <td><%= link_to @recruiting.prefecture.name, search_prefecture_path(content: @recruiting.prefecture_id) %></td>
           <td><%= @recruiting.date %></td>
           <td><%= @recruiting.deadline %></td>
           <td><%= @recruiting.body %></td>
+          
           <!--ゲストユーザーはいいねとコメントアイコンからユーザー詳細に遷移できないように-->
           <% if current_user.name != "guestuser" %>
             <td class=<%= "favorite-" + @recruiting.id.to_s %>><%= render "public/favorites/btn", recruiting: @recruiting %></td>
@@ -37,6 +38,11 @@
           <% else %>
             <td><i class="fas fa-heart" aria-hidden="true"></i> <%= @recruiting.favorites.count %></td>
             <td><i class="fa-regular fa-comment" aria-hidden="true"></i> <%= @recruiting.recruiting_comments.count %></td>          
+          <% end %>
+          
+          <% if @recruiting.user == current_user %>
+            <td><%= link_to "編集", edit_recruiting_path(@recruiting), class: "btn btn-success" %></td>
+            <td><%= link_to "削除", recruiting_path(@recruiting), method: :delete, data: { confirm: "本当に削除して宜しいですか？"}, class: "btn btn-danger" %></td>
           <% end %>
         </tr>
       </tbody>
