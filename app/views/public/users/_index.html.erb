@@ -6,6 +6,7 @@
       <th>ユーザーネーム</th>
       <th>プロフィール</th>
       <th>募集数</th>
+      <td></td>
     </tr>
   </thead>
 
@@ -26,6 +27,7 @@
           <% end %>
         </td>
         <td><%= user.recruitings.where(is_matched: "false").count %> 件</td>
+        <td><%= render "public/relationships/btn", user: user %></td>
       </tr>
     <% end %>
   </tbody>
