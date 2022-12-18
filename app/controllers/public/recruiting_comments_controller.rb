@@ -5,6 +5,7 @@ class Public::RecruitingCommentsController < ApplicationController
     comment = current_user.recruiting_comments.new(recruiting_comment_params)
     comment.recruiting_id = recruiting.id
     comment.save
+    recruiting.create_notification_comment!(current_user, comment.id)
     redirect_to recruiting_path(recruiting)
   end
 

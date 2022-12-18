@@ -3,6 +3,7 @@ class Public::FavoritesController < ApplicationController
     recruiting = Recruiting.find(params[:recruiting_id])
     @favorite = current_user.favorites.new(recruiting_id: recruiting.id)
     @favorite.save
+    recruiting.create_notification_favorite!(current_user)
     render 'replace_btn'
   end
   
