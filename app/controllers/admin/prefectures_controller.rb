@@ -13,17 +13,11 @@ class Admin::PrefecturesController < ApplicationController
 
   def index
     @prefectures = Prefecture.all
-    # if params[:id].present?
-    #   @prefecture = Prefecture.find(params[:id])
-    # else
-      @prefecture = Prefecture.new
-    # end
+    @prefecture = Prefecture.new
   end
 
   def edit
-    # @prefectures = Prefecture.all
     @prefecture = Prefecture.find(params[:id])
-    # render "index"
   end
 
   def update
@@ -42,10 +36,10 @@ class Admin::PrefecturesController < ApplicationController
   end
 
 
+
   private
 
   def prefecture_params
-    # params.require(:prefecture).permit(:name)
     params.require(:prefecture).permit(:name)
   end
 

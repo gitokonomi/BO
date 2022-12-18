@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
     <!--ゲストユーザーは募集投稿機能は見えないように-->
-    <% if current_user.name != "guestuser" %>    
+    <% if user_signed_in? && current_user.name != "guestuser" %>
       <div class='col-3'>
         <%= render "form", recruiting: @recruiting %>
       </div>
