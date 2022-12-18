@@ -27,7 +27,16 @@ class Admin::RecruitingsController < ApplicationController
   def destroy
     @recruiting = Recruiting.find(params[:id])
     @recruiting.destroy
-    redirect_to admin_recruiting_path(@recruiting), notice: "削除しました。"
+    redirect_to admin_recruitings_path, notice: "募集を削除しました。"
+  end
+
+
+
+
+  private
+
+  def recruiting_params
+    params.require(:recruiting).permit(:title, :body, :prefecture_id, :place, :date, :deadline, :is_matched)
   end
 
 end

@@ -31,7 +31,11 @@ class Public::RecruitingsController < ApplicationController
 
   def update
     if @recruiting.update(recruiting_params)
-      redirect_to recruiting_path(@recruiting), notice: "編集しました"
+      if admin_signed_in?
+        redirect_to admin_recruiting_path(@recruiting), notice: "変更を保存しました。"
+      else
+        redirect_to recruiting_path(@recruiting), notice: "変更を保存しました。"
+      end
     else
       render "edit"
     end
@@ -39,7 +43,7 @@ class Public::RecruitingsController < ApplicationController
 
   def destroy
     @recruiting.destroy
-    redirect_to recruitings_path
+    redirect_to recruitings_path, notice: "募集を削除しました。"
   end
 
 
@@ -52,7 +56,7 @@ class Public::RecruitingsController < ApplicationController
 
   def ensure_correct_user
     @recruiting = Recruiting.find(params[:id])
-    unless @recruiting.user == current_user
+    unless @recruiting.user == current_user || admin_signed_in?
       redirect_to root_path, notice: "投稿した本人しか編集できません。"
     end
   end

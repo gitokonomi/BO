@@ -3,7 +3,7 @@
     <h3><<募集詳細>></h3>
   </div>
 
-  <!----------------------募集詳細内容---------------------->  
+  <!----------------------募集詳細内容---------------------->
   <div class='row'>
     <table border="5">
       <thead>
@@ -17,7 +17,7 @@
           <th></th>
         </tr>
       </thead>
-    
+
       <tbody>
         <tr>
           <td>
@@ -32,13 +32,15 @@
           <td><%= @recruiting.body %></td>
           <td><i class="fas fa-heart" aria-hidden="true"></i> <%= @recruiting.favorites.count %></td>
           <td><i class="fa-regular fa-comment" aria-hidden="true"></i> <%= @recruiting.recruiting_comments.count %></td>
+          <td><%= link_to "編集", edit_admin_recruiting_path(@recruiting), class: "btn btn-success" %></td>
+          <td><%= link_to "削除", admin_recruiting_path(@recruiting), method: :delete, data: { confirm: "本当に削除して宜しいですか？"}, class: "btn btn-danger" %></td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!----------------------コメント一覧---------------------->    
-  <div class='row'>  
+  <!----------------------コメント一覧---------------------->
+  <div class='row'>
     <% @recruiting.recruiting_comments.each do |recruiting_comment| %>
       <p><%= image_tag recruiting_comment.user.get_profile_image(50,50) %></p>
       <%= recruiting_comment.user.name %>
@@ -47,11 +49,11 @@
     <% end %>
   </div>
 
-  <!----------------------コメント送信フォーム---------------------->  
+  <!----------------------コメント送信フォーム---------------------->
   <div class='row'>
     <%= form_with model: [@recruiting, @recruiting_comment] do |f| %>
       <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
       <%= f.submit "送信する" %>
     <% end %>
-  </div>          
+  </div>
 </div>

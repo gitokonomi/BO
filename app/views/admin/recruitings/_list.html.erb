@@ -28,6 +28,8 @@
         <td><%= recruiting.body %></td>
         <td><i class="fas fa-heart" aria-hidden="true"></i> <%= recruiting.favorites.count %></td>
         <td><i class="fa-regular fa-comment" aria-hidden="true"></i> <%= recruiting.recruiting_comments.count %></td>
+        <td><%= link_to "編集", edit_admin_recruiting_path(recruiting), class: "btn btn-success" %></td>
+        <td><%= link_to "削除", admin_recruiting_path(recruiting), method: :delete, data: { confirm: "本当に削除して宜しいですか？"}, class: "btn btn-danger" %></td>        
       </tr>
     <% end %>
   </tbody>
