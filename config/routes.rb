@@ -18,8 +18,6 @@ Rails.application.routes.draw do
   # 会員側
   scope module: :public do
     root to: "homes#top"
-    get 'homes/about'
-    get 'homes/help'
     resources :users, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
@@ -32,7 +30,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :recruiting_comments, only: [:create, :destroy]
     end
-    resources :areas, only: [:create, :index, :show, :edit, :update, :destroy]
+    resources :areas, only: [:create, :destroy]
     resources :notifications, only: [:index]
   end
 
@@ -46,6 +44,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/about' => 'public/homes#about', as: :about
+  # get '/help' => 'public/homes#help', as: :help
   get '/search', to: 'searches#search'
   get '/search_prefecture', to: 'searches#search_prefecture'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -28,7 +28,7 @@
         <td><%= recruiting.body %></td>
         
         <!--ゲストユーザーはいいねとコメントアイコンからユーザー詳細に遷移できないように-->
-        <% if current_user.name != "guestuser" %>
+        <% if user_signed_in? && current_user.name != "guestuser" %>
           <td class=<%= "favorite-" + recruiting.id.to_s %>><%= render "public/favorites/btn", recruiting: recruiting %></td>
           <td><%= render "public/recruiting_comments/count",recruiting: recruiting %></td>
         <% else %>
