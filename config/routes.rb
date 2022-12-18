@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       resources :recruiting_comments, only: [:create, :destroy]
     end
     resources :areas, only: [:create, :index, :show, :edit, :update, :destroy]
+    resources :notifications, only: [:index]
   end
 
 

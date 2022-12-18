@@ -22,49 +22,52 @@
           <!--一般会員ログイン時ヘッダーメニュー-->
           <% if user_signed_in? %>
             <li class="text-center mx-2">
-              <%= link_to "マイページ", user_path(current_user),class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+              <%= link_to "マイページ", user_path(current_user), class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
             </li>
             <li class="text-center mx-2">
-              <%= link_to "募集一覧", recruitings_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+              <%= link_to "募集一覧", recruitings_path, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
             </li>
             <li class="text-center mx-2">
-              <%= link_to "ユーザー一覧", users_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+              <%= link_to "ユーザー一覧", users_path, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
             </li>
             <li class="text-center mx-2">
-              <%= link_to "ログアウト", destroy_user_session_path,method: :delete,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+              <%= link_to "通知一覧", notifications_path, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+            </li>
+            <li class="text-center mx-2">
+              <%= link_to "ログアウト", destroy_user_session_path,method: :delete, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
             </li>
             
           <!--管理者ログイン時ヘッダーメニュー-->
           <% elsif admin_signed_in? %>
             <li class="text-center mx-2">
-              <%= link_to "募集一覧", admin_recruitings_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+              <%= link_to "募集一覧", admin_recruitings_path, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
             </li>
             <li class="text-center mx-2">
-              <%= link_to "ユーザー一覧", admin_users_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+              <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
             </li>
             <li class="text-center mx-2">
-              <%= link_to "エリア一覧・登録", admin_prefectures_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+              <%= link_to "エリア一覧・登録", admin_prefectures_path, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
             </li>
             <li class="text-center mx-2">
-              <%= link_to "ログアウト", destroy_admin_session_path,method: :delete,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+              <%= link_to "ログアウト", destroy_admin_session_path,method: :delete, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
             </li>
           
           <!--非ログイン時ヘッダーメニュー-->
           <% else %>
             <li class="text-center mx-2">
-              <%= link_to "（仮）管理者ログイン",  new_admin_session_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+              <%= link_to "（仮）管理者ログイン",  new_admin_session_path, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
             </li>
             <li class="text-center mx-2">
-              <%= link_to "About",  homes_about_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+              <%= link_to "About",  homes_about_path, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
             </li>
             <li class="text-center mx-2">
-              <%= link_to "募集一覧", recruitings_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+              <%= link_to "募集一覧", recruitings_path, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
             </li>
             <li class="text-center mx-2">
-              <%= link_to "ユーザー登録", new_user_registration_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+              <%= link_to "ユーザー登録", new_user_registration_path, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
             </li>
             <li class="text-center mx-2">
-              <%= link_to "ログイン", new_user_session_path,class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+              <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
             </li>
           <% end %>
           </ul>
