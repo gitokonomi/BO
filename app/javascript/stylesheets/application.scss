@@ -1,6 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+body {
+  background-image: url("../images/dice.jpg");
+  background-size:cover;
+}
+
 // スイッチングボタン
 .switch__label {
 	width: 50px;
