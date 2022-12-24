@@ -1,5 +1,5 @@
 class Public::RecruitingCommentsController < ApplicationController
-  
+
   def create
     recruiting = Recruiting.find(params[:recruiting_id])
     comment = current_user.recruiting_comments.new(recruiting_comment_params)
@@ -11,7 +11,7 @@ class Public::RecruitingCommentsController < ApplicationController
 
   def destroy
     RecruitingComment.find(params[:id]).destroy
-    redirect_to recruiting_path(params[:recruiting_id])
+    redirect_to recruiting_path(params[:recruiting_id]), notice: "コメントを削除しました。"
   end
 
 
