@@ -1,7 +1,11 @@
 <header class="border-bottom bg-header">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-        <a class="col navbar-brand" href="/"><%= image_tag "logo.png", class:"header-logo" %></a>
+        <div class="col navbar-brand">
+          <%= link_to root_path do %>
+            <%= image_tag "logo.png", class:"header-logo" %>
+          <% end %>
+        </div>
       <% if admin_signed_in? %>
         <p class="col mb-0">管理者ログイン中</p>
       <% end %>
@@ -17,8 +21,10 @@
 <!--一般会員ログイン時ヘッダーメニュー-->
           <% if user_signed_in? %>
             <li class="text-center mx-2">
-              <!--マイページ-->
-              <%= link_to "マイページ", user_path(current_user), class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+              <%= link_to user_path(current_user) do %>
+                <%= image_tag current_user.profile_image, class: "my-icon" %>
+                <div class="tooltips">マイページ</div>
+              <% end %>
             </li>
             <li class="text-center mx-2">
               <%= link_to recruitings_path, class: 'nav-link text-dark' do %>
@@ -75,7 +81,7 @@
 <!--非ログイン時ヘッダーメニュー-->
           <% else %>
             <li class="text-center mx-2">
-              <%= link_to "（仮）管理者ログイン",  new_admin_session_path, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
+              <%= link_to "管理者ログイン",  new_admin_session_path, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
             </li>
             <li class="text-center mx-2">
               <%= link_to "About",  about_path, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
