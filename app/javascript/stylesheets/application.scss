@@ -1,5 +1,4 @@
 @import '~bootstrap/scss/bootstrap';
-//@import '@fortawesome/fontawesome-free/scss/fontawesome';
 
 body {
   // background-image: url("../images/dice.jpg");
@@ -12,11 +11,11 @@ body {
 }  
 
 .bg-header{
-    background-color: #f0f8ff ;
+  background-color: #f0f8ff ;
 }
 
 .bg-footer{
-    background-color: #7fffd4 ;
+  background: linear-gradient(to right, #7fffd4 0%, #2af598 100%);
 }
 
 // 検索バー
@@ -28,11 +27,9 @@ body {
   width: 245px;
   overflow: hidden;
 }
-
 .search_container input[type="text"]:focus {
   outline: 0;
 }
-
 .search_submit {
   cursor: pointer;
   font-family: FontAwesome;
@@ -45,6 +42,12 @@ body {
   vertical-align: middle;
 }
 
+// コメント
+.comment_reply {
+  margin: 10px;
+  background: linear-gradient(to right, #fefedf 0%, #f0f8ff 100%);
+  
+}
 
 // スイッチングボタン
 .switch__label {
@@ -121,4 +124,3 @@ body {
   width: 100%;
   height: 100%;
 }
-// スイッチングボタン

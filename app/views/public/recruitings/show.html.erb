@@ -2,7 +2,7 @@
   <div class='row'>
     <h3><<募集詳細>></h3>
   </div>
-  
+
   <!----------------------募集詳細内容---------------------->
   <div class='row'>
     <table border="5">
@@ -17,7 +17,7 @@
           <th></th>
         </tr>
       </thead>
-    
+
       <tbody>
         <tr>
           <td>
@@ -30,16 +30,16 @@
           <td><%= @recruiting.date %></td>
           <td><%= @recruiting.deadline %></td>
           <td><%= @recruiting.body %></td>
-          
+
           <!--ゲストユーザーはいいねとコメントアイコンからユーザー詳細に遷移できないように-->
           <% if current_user.name != "guestuser" %>
             <td class=<%= "favorite-" + @recruiting.id.to_s %>><%= render "public/favorites/btn", recruiting: @recruiting %></td>
             <td><%= render "public/recruiting_comments/count", recruiting: @recruiting %></td>
           <% else %>
             <td><i class="fas fa-heart" aria-hidden="true"></i> <%= @recruiting.favorites.count %></td>
-            <td><i class="fa-regular fa-comment" aria-hidden="true"></i> <%= @recruiting.recruiting_comments.count %></td>          
+            <td><i class="fa-regular fa-comment" aria-hidden="true"></i> <%= @recruiting.recruiting_comments.count %></td>
           <% end %>
-          
+
           <% if @recruiting.user == current_user %>
             <td><%= link_to "編集", edit_recruiting_path(@recruiting), class: "btn btn-success" %></td>
             <td><%= link_to "削除", recruiting_path(@recruiting), method: :delete, data: { confirm: "本当に削除して宜しいですか？"}, class: "btn btn-danger" %></td>
@@ -48,24 +48,29 @@
       </tbody>
     </table>
   </div>
-  
+
   <!----------------------コメント一覧---------------------->
-  <div class='row'>  
     <% @recruiting.recruiting_comments.each do |recruiting_comment| %>
-      <p><%= image_tag recruiting_comment.user.get_profile_image(50,50) %></p>
-      <%= recruiting_comment.user.name %>
-      <%= recruiting_comment.created_at.strftime('%Y/%m/%d') %><%= recruiting_comment.comment %>
-      <% if recruiting_comment.user == current_user %>
-        <%= link_to "削除", recruiting_recruiting_comment_path(recruiting_comment.recruiting, recruiting_comment), method: :delete %>
-      <% end %>
+      <div class="comment_reply flex-column">
+        <i class="fa-solid fa-reply fa-rotate-180"></i>
+        <%= link_to user_path(recruiting_comment.user) do %>
+          <%= image_tag recruiting_comment.user.get_profile_image(30,30) %>
+          <%= recruiting_comment.user.name %></br>
+        <% end %>
+        <%= recruiting_comment.comment %>
+        <% if recruiting_comment.user == current_user %>
+          <%= link_to "削除", recruiting_recruiting_comment_path(recruiting_comment.recruiting, recruiting_comment), method: :delete %>
+        <% end %>
+        <div class="small text-muted text-right"><%= recruiting_comment.created_at.strftime('%Y/%m/%d') %></div>
+        <hr>
+      </div>
     <% end %>
-  </div>
-  
+
   <!--コメント送信フォーム（ゲストユーザーは表示なし）-->
   <% if current_user.name != "guestuser" %>
     <div class='row'>
       <%= form_with model: [@recruiting, @recruiting_comment] do |f| %>
-        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+        <%= f.text_area :comment, size: '50x5', placeholder: "コメントをここに" %>
         <%= f.submit "送信する" %>
       <% end %>
     </div>
