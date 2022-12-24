@@ -25,13 +25,57 @@
   width:  160px;
   height: 80px;
 }
-
 .bg-header{
   background-color: #f0f8ff ;
 }
 
 .bg-footer{
   background: linear-gradient(to right, #7fffd4 0%, #2af598 100%);
+}
+
+
+.header-icon{
+  font-size:2em;
+}
+// ヘッダーアイコン説明
+.header-icon-tips li {
+  position:relative;
+  // margin:20px 0px;
+  padding: 5px;
+  list-style-type: none;
+}
+.header-icon-tips li:hover {
+  background: #d2e7fa;
+  border-radius: 0.5em;
+}
+// アイコン補足説明
+.tooltips {
+  width: 150px;
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  padding: 0.5em;
+  background: #75cefa;
+  color: #FFFFFF;
+  border-radius: 0.5em;
+}
+.tooltips:after {
+  width: 100%;
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0.5em;
+  top: -8px;
+  border-top:8px solid transparent;
+  border-left:8px solid #c72439;
+}
+
+.header-icon-tips li:hover .tooltips {
+  display: block;
+}
+
+.my-icon{
+  border-radius: 50%;
 }
 
 // 検索バー
@@ -62,10 +106,9 @@
 .comment_reply {
   margin: 10px;
   background: linear-gradient(to right, #fefedf 0%, #f0f8ff 100%);
-
 }
 
-// スイッチングボタン
+// マッチング完了スイッチングボタン
 .switch__label {
   width: 50px;
   position: relative;
