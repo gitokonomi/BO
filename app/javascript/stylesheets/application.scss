@@ -1,14 +1,30 @@
 @import '~bootstrap/scss/bootstrap';
 
-body {
-  // background-image: url("../images/dice.jpg");
+// トップ画面
+.mv-image {
+  width: 100%;
+  height: 650px;
+  position: relative;
+  background-image: url("../images/paris.jpg");
   background-size: cover;
+  background-position: center;
 }
+.mv-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5px 20px;
+  font-family: 'MS Serif', sans-serif;
+  font-size: 76px;
+  background-color: rgba(255,255,255,0.4)
+}
+
 
 .header-logo {
   width:  160px;
   height: 80px;
-}  
+}
 
 .bg-header{
   background-color: #f0f8ff ;
@@ -46,7 +62,7 @@ body {
 .comment_reply {
   margin: 10px;
   background: linear-gradient(to right, #fefedf 0%, #f0f8ff 100%);
-  
+
 }
 
 // スイッチングボタン
