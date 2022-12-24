@@ -32,7 +32,7 @@ class Admin::PrefecturesController < ApplicationController
   def destroy
     @prefecture = Prefecture.find(params[:id])
     @prefecture.destroy
-    redirect_to admin_prefectures_path
+    redirect_to admin_prefectures_path, notice: "エリアを削除しました。"
   end
 
 
