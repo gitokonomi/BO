@@ -40,14 +40,20 @@
   </div>
 
   <!----------------------コメント一覧---------------------->
-  <div class='row'>
+
     <% @recruiting.recruiting_comments.each do |recruiting_comment| %>
-      <p><%= image_tag recruiting_comment.user.get_profile_image(50,50) %></p>
-      <%= recruiting_comment.user.name %>
-      <%= recruiting_comment.created_at.strftime('%Y/%m/%d') %><%= recruiting_comment.comment %>
-      <%= link_to "削除", admin_recruiting_recruiting_comment_path(recruiting_comment.recruiting, recruiting_comment), method: :delete %>
+      <div class="comment_reply flex-column">
+        <i class="fa-solid fa-reply fa-rotate-180"></i>
+        <%= link_to user_path(recruiting_comment.user) do %>
+          <%= image_tag recruiting_comment.user.get_profile_image(30,30) %>
+          <%= recruiting_comment.user.name %></br>
+        <% end %>
+        <%= recruiting_comment.comment %>
+        <%= link_to "削除", recruiting_recruiting_comment_path(recruiting_comment.recruiting, recruiting_comment), method: :delete %>
+        <div class="small text-muted text-right"><%= recruiting_comment.created_at.strftime('%Y/%m/%d') %></div>
+        <hr>
+      </div>
     <% end %>
-  </div>
 
   <!----------------------コメント送信フォーム---------------------->
   <div class='row'>
