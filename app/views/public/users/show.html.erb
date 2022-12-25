@@ -1,5 +1,5 @@
 <div class='container'>
-  
+
   <div class='row'>
     <%= render 'info', {user: @user, areas: @areas} %>
   </div>
@@ -10,9 +10,15 @@
     <div class='row'>
       <%= render 'public/relationships/btn', {user: @user} %>
     </div>
-    <div class='row'>  
-      <%= render 'public/recruitings/list', recruitings: @user_recruitings %>
-    </div>
+
+    <% if @user_recruitings.exists? %>
+      <div class='row'>
+        <%= render 'public/recruitings/list', recruitings: @user_recruitings %>
+      </div>
+    <% else %>
+      <h3>募集をしていません</h3>
+    <% end %>
+
   <% end %>
-  
+
 </div>

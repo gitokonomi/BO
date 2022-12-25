@@ -1,44 +1,10 @@
-<% unless @favorite_recruitings.present? %>
-  <h3>興味のある募集を見つけてね</h3>
-<% else %>
+<div class="container">
+  <% unless @favorite_recruitings.present? %>
+    <h3>興味のある募集を見つけてね</h3>
+  <% else %>
+  
+    <h3><<興味あり募集一覧>></h3>
+    <%= render "public/recruitings/list",recruitings: @favorite_recruitings %>
 
-  <h3><<興味あり募集一覧>></h3>
-  
-  <table border="5">
-  
-    <thead>
-      <tr>
-        <td></td>
-        <th>タイトル</th>
-        <th>場所</th>
-        <th>開催日時</th>
-        <th>募集締切</th>
-        <th>募集内容</th>
-        <th></th>
-      </tr>
-    </thead>
-  
-    <tbody>
-      <% @favorite_recruitings.each do |recruiting| %>
-        <tr>
-          <td>
-            <%= link_to(recruiting.user) do %>
-              <%= image_tag recruiting.user.get_profile_image(100,100) %>
-            <% end %>
-          </td>
-          <td><%= link_to recruiting.title, user_path(recruiting.user) %></td>
-          <td><%= recruiting.prefecture.name %></td>
-          <td><%= recruiting.date %></td>
-          <td><%= recruiting.deadline %></td>
-          <td><%= recruiting.body %></td>
-          <% if current_user.name != "guestuser" %>
-            <td class=<%= "favorite-" + recruiting.id.to_s %>><%= render "public/favorites/btn", recruiting: recruiting %></td>
-          <% else %>
-            <td><i class="fas fa-heart" aria-hidden="true"></i> <%= recruiting.favorites.count %></td>
-          <% end %>          
-        </tr>
-      <% end %>
-    </tbody>
-  
-  </table>
-<% end %>
+  <% end %>
+</div>
