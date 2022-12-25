@@ -22,7 +22,7 @@
           <% if user_signed_in? %>
             <li class="text-center mx-2">
               <%= link_to user_path(current_user) do %>
-                <%= image_tag current_user.profile_image, class: "my-icon" %>
+                <%= image_tag current_user.get_profile_image(80,80), class: "my-icon" %>
                 <div class="tooltips">マイページ</div>
               <% end %>
             </li>
@@ -83,9 +83,6 @@
           <% else %>
             <li class="text-center mx-2">
               <%= link_to "管理者ログイン",  new_admin_session_path, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
-            </li>
-            <li class="text-center mx-2">
-              <%= link_to "About",  about_path, class: 'nav-link text-dark border rounded rounded-3 bg-white' %>
             </li>
             <li class="text-center mx-2">
               <%= link_to recruitings_path, class: 'nav-link text-dark' do %>
