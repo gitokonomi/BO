@@ -23,7 +23,7 @@ class Admin::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to admin_user_path(@user), notice: "変更を保存しました。"
     else
-      flash[:notice] = "保存できませんでした"
+      flash[:alert] = "保存できませんでした"
       render "edit"
     end
   end
