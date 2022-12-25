@@ -11,6 +11,11 @@ module BO
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    # デフォルトのロケールを:en以外に変更する
+    config.i18n.default_locale = :ja
+    # I18nライブラリに訳文の探索場所を指示する
+    config.i18n.load_path += Dir[Rails.root.join('config','locales','**','/*.yml').to_s]
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -19,4 +24,5 @@ module BO
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
   end
+
 end
