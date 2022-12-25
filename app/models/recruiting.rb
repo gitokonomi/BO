@@ -1,10 +1,16 @@
 class Recruiting < ApplicationRecord
-  
+
   belongs_to :user
   belongs_to :prefecture
   has_many :favorites, dependent: :destroy
   has_many :recruiting_comments, dependent: :destroy
-  has_many :notifications, dependent: :destroy  
+  has_many :notifications, dependent: :destroy
+
+  validates :title, presence: true
+  validates :date, presence: true
+  validates :place, presence: true
+  validates :deadline, presence: true
+  validates :body, presence: true
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
@@ -26,7 +32,7 @@ class Recruiting < ApplicationRecord
       end
       notification.save if notification.valid?
     end
-  end  
+  end
 
   # コメント通知用メソッド
   def create_notification_comment!(current_user, recruiting_comment_id)
@@ -55,11 +61,11 @@ class Recruiting < ApplicationRecord
   end
 
 
-  # 検索用メソッド 
+  # 検索用メソッド
   def self.search_for(content)
     Recruiting.where('title LIKE ? OR body LIKE ?', '%'+content+'%', '%'+content+'%')
   end
-  
+
   # def self.search_for_time(content)
   #   Recruiting.where('date LIKE ?', '%'+content+'%')
   # end

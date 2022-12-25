@@ -67,6 +67,7 @@
   - bootstrap-sass 4.5.3
   - kaminari 1.2.1
   - bootstrap5-kaminari-views 0.0.1
+  - rails-i18n
   - dotenv-rails
   - net-smtp
   - net-pop

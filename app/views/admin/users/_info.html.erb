@@ -3,16 +3,24 @@
 <%= user.introduction %>
 <%= user.email %>
 <% if user.is_deleted == false %>
-  <p>有効</p>  
+  <p>有効</p>
 <% else %>
   <p>退会済</p>
 <% end %>
-<% areas.each do |area| %>
-  <%= area.prefecture.name %>
+<% unless areas.exists? %>
+  <% areas.each do |area| %>
+    <%= area.prefecture.name %>
+  <% end %>
 <% end %>
-<!--follows-->
-<!--%= link_to user.followings.count, user_followings_path(user) %>-->
-<!--followers-->
-<!--%= link_to user.followers.count, user_followers_path(user) %>-->
-<%= link_to "編集", edit_admin_user_path(user), class: "btn btn-info" %>
+
+<%= link_to admin_user_followings_path(user) do %>
+  <p>フォロー中</p>
+  <%= user.followings.count %>
+<% end %>
+<%= link_to admin_user_followers_path(user) do %>
+  <p>フォロワー</p>
+  <%= user.followers.count %>
+<% end %>
+
+<%= link_to "プロフィール編集", edit_admin_user_path(user), class: "btn btn-info" %>
 

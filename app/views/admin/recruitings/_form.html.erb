@@ -1,4 +1,4 @@
-<%= form_with model:recruiting, local:true do |f| %>
+<%= form_with model:recruiting, url: admin_recruiting_path, local:true do |f| %>
   <div class="form-group">
     <%= f.label :タイトル %>
     <%= f.text_field :title, placeholder: "アクションゲーム会",class: 'form-control recruiting_title' %>
@@ -6,7 +6,6 @@
   <div class="form-group">
     <%= f.label :エリア %>
     <%= f.select :prefecture_id, options_from_collection_for_select(Prefecture.all, :id, :name), class: "form-control recruiting_prefecture" %>
-    <!--%= f.select :prefecture_id, options_from_collection_for_select(current_user.areas.all, :prefecture_id, :prefecture_id), class: "form-control recruiting_prefecture" %>-->
   </div>
   <div class="form-group">
     <%= f.label :遊ぶ場所 %>
@@ -26,11 +25,6 @@
   </div>
   
   <!--editの場合のみマッチング完了フラグ操作-->
-  <% if recruiting.id.nil? %>
-    <div class="form-group">
-    <%= f.submit "募集", class: 'btn btn-success' %>
-    </div>
-  <% else %>
     <div class="form-group switch">
       <p>マッチング完了？</p>
       <label class="switch__label">
@@ -42,7 +36,5 @@
     <div class="form-group">
     <%= f.submit "変更を保存する", class: 'btn btn-success' %>
     </div>
-  <% end %>  
-
 
 <% end %>

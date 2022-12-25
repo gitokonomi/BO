@@ -20,7 +20,11 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   has_one_attached :profile_image
-  
+
+  validates :name, length: { minimum: 2, maximum: 20 }, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
+  validates :introduction, length: { maximum: 150 }
+
   # プロフィール画像取得
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -29,12 +33,12 @@ class User < ApplicationRecord
     end
       profile_image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   # ユーザー検索
   def self.search_for(content)
     User.where('name LIKE ?', '%' + content + '%')
-  end  
-  
+  end
+
   # ゲストログイン機能
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
@@ -42,12 +46,12 @@ class User < ApplicationRecord
       user.name = "guestuser"
     end
   end
-  
+
   # フォロー機能用
   def follow(user)
     relationships.create(followed_id: user.id)
   end
-  
+
   def unfollow(user)
     relationships.find_by(followed_id: user.id).destroy
   end
@@ -55,7 +59,7 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  
+
   # フォロー通知機能
   def create_notification_follow!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
@@ -66,6 +70,6 @@ class User < ApplicationRecord
       )
       notification.save if notification.valid?
     end
-  end  
-  
+  end
+
 end

@@ -31,11 +31,7 @@ class Public::RecruitingsController < ApplicationController
 
   def update
     if @recruiting.update(recruiting_params)
-      if admin_signed_in?
-        redirect_to admin_recruiting_path(@recruiting), notice: "変更を保存しました。"
-      else
-        redirect_to recruiting_path(@recruiting), notice: "変更を保存しました。"
-      end
+      redirect_to recruiting_path(@recruiting), notice: "変更を保存しました。"
     else
       render "edit"
     end

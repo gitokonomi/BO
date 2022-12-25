@@ -1,3 +1,5 @@
 <div class='container'>
-  <%= render "public/recruitings/form", recruiting: @recruiting %>
+  <%= render 'layouts/errors', obj: @recruiting %>
+  <p>内容を編集して下さい</p>
+  <%= render "form", recruiting: @recruiting %>
 </div>

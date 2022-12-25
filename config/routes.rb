@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   }
 
 
-  #ゲストログイン用 
+  #ゲストログイン用
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
@@ -37,11 +37,15 @@ Rails.application.routes.draw do
 
   # 管理側
   namespace :admin do
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update] do
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
     resources :prefectures, only: [:index, :create, :edit, :update, :destroy]
     resources :recruitings, only: [:index, :show, :edit, :update, :destroy] do
       resources :recruiting_comments, only: [:destroy]
     end
+    resources :areas, only: [:create, :destroy]
   end
 
   get '/about' => 'public/homes#about', as: :about
