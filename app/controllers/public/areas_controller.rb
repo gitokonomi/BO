@@ -5,10 +5,10 @@ class Public::AreasController < ApplicationController
     @area = current_user.areas.new(area_params)
     # 既に登録済みのエリアを選んだ場合の挙動
     if current_user.areas.find_by(prefecture_id: params[:area][:prefecture_id]).present?
-      redirect_to edit_user_path(current_user), alert: "既に追加済みです。"
+      redirect_to edit_user_path(current_user), alert: "そのエリアは既に追加済みです。"
     elsif @area.save
       @areas = current_user.areas.all
-      redirect_to edit_user_path(current_user), notice: "追加しました。"
+      redirect_to edit_user_path(current_user), notice: "エリアを追加しました。"
     else
       redirect_to root_path
     end
@@ -17,7 +17,7 @@ class Public::AreasController < ApplicationController
   def destroy
     @area = Area.find(params[:id])
     @area.destroy
-    redirect_to edit_user_path(current_user)
+    redirect_to edit_user_path(current_user), notice: "エリアを削除しました。"
   end
 
 

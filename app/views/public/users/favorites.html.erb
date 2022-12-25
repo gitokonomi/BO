@@ -1,8 +1,8 @@
 <div class="container">
   <% unless @favorite_recruitings.present? %>
-    <h3>興味のある募集を見つけてね</h3>
+    <h3>いいねした募集はまだありません</h3>
   <% else %>
-  
+
     <h3><<興味あり募集一覧>></h3>
     <%= render "public/recruitings/list",recruitings: @favorite_recruitings %>
 
