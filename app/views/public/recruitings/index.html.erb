@@ -3,6 +3,7 @@
     <!--ゲストユーザーは募集投稿機能は見えないように-->
     <% if user_signed_in? && current_user.name != "guestuser" %>
       <div class='col-3'>
+        <p>内容を入力して</br>募集してみよう！</p>
         <%= render "form", recruiting: @recruiting %>
       </div>
     <% end %>

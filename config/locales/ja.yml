@@ -13,6 +13,12 @@ ja:
         email: メールアドレス
       prefecture:
         name: エリア
+      recruiting:
+        title: タイトル
+        date: 日程
+        place: 遊ぶ場所
+        deadline: 募集の締切日
+        body: 内容
   date:
     abbr_day_names:
     - 日
