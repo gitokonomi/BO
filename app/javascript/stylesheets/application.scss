@@ -186,10 +186,23 @@
   height: 100%;
 }
 
+// バリデーションエラーメッセージ
 .error_explanation {
   color:#262626; 
   background:#FFEBE8;
   text-align: center;
   border:2px solid #990000;
   padding:12px; font-weight:850;
+}
+
+// フラッシュメッセージ
+.flash-notice {
+  background-color: lightBlue;
+  text-align: center;
+  font-weight:850;
+}
+.flash-alert {
+  background-color: alert_orange;
+  text-align: center;
+  font-weight:850;
 }
