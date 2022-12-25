@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @users = User.all.page(params[:page])
   end
@@ -15,7 +15,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     @prefectures = Prefecture.all
     @area = Area
-    @areas = @user.areas.all
+    @areas = @user.areas
   end
 
   def update
