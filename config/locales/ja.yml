@@ -19,6 +19,8 @@ ja:
         place: 遊ぶ場所
         deadline: 募集の締切日
         body: 内容
+      recruiting_comment:
+        comment: コメント
   date:
     abbr_day_names:
     - 日
