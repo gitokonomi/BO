@@ -4,8 +4,10 @@
 <% if current_user == user %>
   <%= user.email %>
 
-  <% areas.each do |area| %>
-    <%= area.prefecture.name %>
+  <% unless areas.exists? %>
+    <% areas.each do |area| %>
+      <%= area.prefecture.name %>
+    <% end %>
   <% end %>
   
   <%= link_to user_followings_path(user) do %>

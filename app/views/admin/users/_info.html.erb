@@ -7,8 +7,10 @@
 <% else %>
   <p>退会済</p>
 <% end %>
-<% areas.each do |area| %>
-  <%= area.prefecture.name %>
+<% unless areas.exists? %>
+  <% areas.each do |area| %>
+    <%= area.prefecture.name %>
+  <% end %>
 <% end %>
 
 <%= link_to admin_user_followings_path(user) do %>
