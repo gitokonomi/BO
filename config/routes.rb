@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     resources :recruitings, only: [:index, :show, :edit, :update, :destroy] do
       resources :recruiting_comments, only: [:destroy]
     end
+    resources :areas, only: [:create, :destroy]
   end
 
   get '/about' => 'public/homes#about', as: :about
