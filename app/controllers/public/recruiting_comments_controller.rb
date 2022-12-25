@@ -6,7 +6,7 @@ class Public::RecruitingCommentsController < ApplicationController
     comment.recruiting_id = recruiting.id
     comment.save
     recruiting.create_notification_comment!(current_user, comment.id)
-    redirect_to recruiting_path(recruiting)
+    redirect_to recruiting_path(recruiting), notice: "募集にコメントしました。"
   end
 
   def destroy

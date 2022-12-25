@@ -23,6 +23,10 @@ class Public::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "変更を保存しました。"
     else
+      @prefectures = Prefecture.all
+      @area = Area
+      @areas = @user.areas.all
+      flash[:alert] = "保存できませんでした"
       render "edit"
     end
   end
