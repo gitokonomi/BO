@@ -24,13 +24,12 @@
           <div class="list_comm">
             <%= render "public/recruiting_comments/count",recruiting: recruiting %>
           </div>
-
           <div class="list_fav">
             <div class=<%= "favorite-" + recruiting.id.to_s %>>
               <%= render "public/favorites/btn", recruiting: recruiting %>
             </div>
           </div>
-          
+
         <% else %>
           <div class="list_comm">
             <i class="fa-regular fa-comment" aria-hidden="true"></i> <%= recruiting.recruiting_comments.count %>
@@ -39,15 +38,15 @@
             <i class="fas fa-heart" aria-hidden="true"></i> <%= recruiting.favorites.count %>
           </div>
         <% end %>
-
-        <strong><%= l recruiting.deadline, format: :post %>まで募集</strong>
-
+        <div class="list_dead">
+          <strong><%= l recruiting.deadline, format: :post %>まで募集</strong>
+        </div>
         <% if recruiting.user == current_user %>
           <div>
             <%= link_to "編集", edit_recruiting_path(recruiting), class: "btn btn-success" %>
             <%= link_to "削除", recruiting_path(recruiting), method: :delete, data: { confirm: "本当に削除して宜しいですか？"}, class: "btn btn-danger" %>
           </div>
         <% end %>
-        
+
       </div>
     <% end %>
