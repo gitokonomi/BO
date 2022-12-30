@@ -211,8 +211,6 @@
   height: 70px;
   object-fit:cover;
 }
-
-
 ////////////////////募集一覧ここまで////////////////////
 
 
@@ -419,4 +417,8 @@
   background-color: orange;
   text-align: center;
   font-weight:850;
+}
+
+.marker_blue {
+  background: linear-gradient(transparent 70%, #75cefa 0%);
 }
