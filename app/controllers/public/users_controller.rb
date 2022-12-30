@@ -10,7 +10,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @areas = @user.areas.all
-    @user_recruitings = @user.recruitings
+    @user_recruitings = @user.recruitings.page(params[:page]).per(12)
   end
 
   def edit

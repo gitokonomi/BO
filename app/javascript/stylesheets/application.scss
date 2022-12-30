@@ -85,7 +85,6 @@
 .search_container input[type="text"]{
   border: 1px solid #999;
   padding: 3px 5px;
-  border-radius: 20px;
   height: 2.0em;
   width: 245px;
   overflow: hidden;
@@ -102,7 +101,6 @@
   color: #3879D9;
   outline : none;
   display: inline-block;
-  vertical-align: middle;
 }
 ////////////////////ヘッダーフッターここまで////////////////////
 
@@ -124,12 +122,12 @@
 }
 //  index 募集一覧配置
 .index_recruitings {
+  flex: 1;
   padding: 30px 0px 90px 10px;
   margin: 0 auto;
 }
 .recruitings_body {
   display: flex;
-  flex: 1;
   flex-wrap: wrap;
   list-style: none;
 }
@@ -144,34 +142,39 @@
 // 各投稿データボックス
 .list_box {
   position: relative;
-  width: 300px;
-  padding: 10px;
+  width: 350px;
+  height: 500px;
+  padding: 15px;
   margin: 0 15px 30px 0;
   background-color: #f0f8ff;
   list-style: none;
-  border: 1px solid #000;
+  border: 2px solid #000;
   flex-direction: column
 }
 .list_box:hover {
-  border: 6px solid #8ae6c2;
+  border: 2px solid #8ae6c2;
 }
 
 .list_dead {
-  margin-top: auto
+  margin-top: auto;
+  position: absolute;
+  bottom: 10px;
 }
 
 // いいねとコメント位置
 .list_fav {
-  text-align: right;
   padding-left: 5px;
-  float: right;
-  margin-top: auto
+  margin-top: auto;
+  position: absolute;
+  bottom: 10px;
+  right: 50px;
 }
 .list_comm {
-  text-align: right;
   padding-left: 5px;
-  float: right;
-  margin-top: auto
+  margin-top: auto;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
 
 
@@ -181,8 +184,8 @@
   color: #fff;
   width: 110px;
   position: relative;
-  top: -18px;
-  right: -27px;
+  top: -24px;
+  right: -33px;
   z-index: 1;
   float: right;
   margin-right: 10px;
@@ -211,6 +214,106 @@
 
 
 ////////////////////募集一覧ここまで////////////////////
+
+
+////////////////////ユーザー詳細////////////////////
+.user_container {
+  padding: 20px;
+  margin: 20px auto;
+  width: 700px;
+  position: relative;
+}
+.user_container::before, .user_container::after {
+  content: '';
+  width: 100px;
+  height: 100px;
+  position: absolute;
+}
+.user_container::before {
+  border-left: 20px solid rgba(176,224,230,0.5);
+  border-top: 20px solid rgba(176,224,230,0.5);
+  border-radius: 15px;
+  top: 0;
+  left: 0;
+}
+.user_container::after {
+  border-right: 20px solid rgba(176,224,230,0.5);
+  border-bottom: 20px solid rgba(176,224,230,0.5);
+  border-radius: 15px;
+  bottom: 0;
+  right: 0;
+}
+
+.detail {
+  display: flex;
+  border-bottom: 1px solid rgba(176,224,230,0.5);
+}
+.detail__image {
+  border-radius: 50%;
+  border: 6px solid rgba(117,206,250,0.4);
+  width: 80px;
+  height: 80px;
+  object-fit:cover;
+  margin: 15px;
+}
+.detail__info {
+  position: relative;
+  width: 350px;
+  padding: 5px;
+}
+.user_name {
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute;
+  top: 20%;
+}
+.user_email {
+  font-weight: lighter;
+  position: absolute;
+  margin-top: auto;
+  bottom: 5px;
+}
+.detail__edit {
+  padding: 10px;
+  margin-left: auto;
+}
+.user_edit_btn {
+  width: 100px;
+  padding: 12px;
+  color: #fff;
+  border-radius: 30px;
+  background-color: #75cefa;
+  white-space: nowrap
+}
+
+.user_intro {
+  word-wrap: break-word;
+  padding: 5px;
+}
+
+#area {
+  display: flex;
+}
+
+.area__user {
+  padding: 5px;
+}
+
+#follow {
+  display: flex;
+}
+.following_counts {
+  padding: 5px;
+}
+.follower_counts {
+  padding: 5px;
+  margin-left: 20px;
+}
+
+.fav_recruiting {
+  padding: 5px;
+}
+////////////////////ユーザー詳細ここまで////////////////////
 
 
 // コメント機能

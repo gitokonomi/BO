@@ -15,7 +15,7 @@
         </div><hr>
 
         <div><strong>タイトル：</strong><%= link_to recruiting.title, recruiting_path(recruiting) %></div>
-        <div><strong>エリア：</strong><%= link_to recruiting.prefecture.name, search_prefecture_path(content: recruiting.prefecture_id) %></div>
+        <div><i class="fa-solid fa-location-dot"></i> <%= link_to recruiting.prefecture.name, search_prefecture_path(content: recruiting.prefecture_id) %></div>
         <div><%= recruiting.body %></div>
         <hr>
 
@@ -38,9 +38,9 @@
             <i class="fas fa-heart" aria-hidden="true"></i> <%= recruiting.favorites.count %>
           </div>
         <% end %>
-        <div class="list_dead">
-          <strong><%= l recruiting.deadline, format: :post %>まで募集</strong>
-        </div>
+          <div class="list_dead">
+            <strong><%= l recruiting.deadline, format: :post %>まで募集</strong>
+          </div>
         <% if recruiting.user == current_user %>
           <div>
             <%= link_to "編集", edit_recruiting_path(recruiting), class: "btn btn-success" %>
