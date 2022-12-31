@@ -1,9 +1,6 @@
-<div class='container'>
-  <div class='row'>
-    <h3><<募集一覧>></h3>
-  </div>
+<div class="index_container">
 
-  <div class='row'>
-    <%= render "list", recruitings: @recruitings %>
-  </div>
+<div class="index_recruitings">
+  <div class="recruitings_body"><%= render "list", recruitings: @recruitings %></div>
+  <div class="recruitings_page"><%= paginate @recruitings, theme: 'bootstrap-5' %></div>
 </div>

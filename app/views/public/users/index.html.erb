@@ -1,17 +1,17 @@
 <div class='container'>
-  
+
   <div class='row my-3'>
-    <h2 class="marker_blue">ユーザー一覧</h2>
+    <h3 class="marker_blue">ユーザー一覧</h3>
   </div>
-  
+
   <div class='row'>
     <%= render 'index', users: @users %>
   </div>
-      
+
   <div class="row">
     <div class="col-11 d-flex justify-content-center">
       <%= paginate @users, theme: 'bootstrap-5' %>
     </div>
   </div>
-  
+
 </div>

@@ -10,7 +10,7 @@
 </div>
 
 <div class="user_intro">
-  <%= safe_join(@user.introduction.split("\n"),tag(:br)) %>
+  <%= simple_format(user.introduction) %>
 </div>
 
 <% if current_user == user %>
