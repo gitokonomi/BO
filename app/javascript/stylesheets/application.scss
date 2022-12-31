@@ -219,6 +219,7 @@
   padding: 20px;
   margin: 20px auto;
   width: 700px;
+  height: auto;
   position: relative;
 }
 .user_container::before, .user_container::after {
@@ -283,13 +284,17 @@
   background-color: #75cefa;
   white-space: nowrap
 }
+.followbtn {
+  padding: 10px;
+  margin-left: auto;
+}
 
 .user_intro {
   word-wrap: break-word;
   padding: 5px;
 }
 
-#area {
+.area {
   display: flex;
 }
 
@@ -297,7 +302,7 @@
   padding: 5px;
 }
 
-#follow {
+.follow {
   display: flex;
 }
 .following_counts {
@@ -311,6 +316,8 @@
 .fav_recruiting {
   padding: 5px;
 }
+
+
 ////////////////////ユーザー詳細ここまで////////////////////
 
 

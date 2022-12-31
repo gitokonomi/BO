@@ -1,11 +1,13 @@
-<div class='container'>
+<div class='user_container'>
+  <%= render 'info', {user: @user, areas: @areas} %>
+  <%= link_to "いいねした募集", favorites_user_path(@user), class: "fav_recruiting" %>
+</div>
   
-  <div class='row'>
-    <%= render 'info', {user: @user, areas: @areas} %>
-  </div>
-
-  <div class='row'>  
-    <%= render 'admin/recruitings/list', recruitings: @user_recruitings %>
-  </div>
-  
+<div class="index_recruitings">
+  <% if @user_recruitings.exists? %>
+    <div class="recruitings_body"><%= render 'admin/recruitings/list', recruitings: @user_recruitings %></div>
+    <div class="recruitings_page"><#= paginate @user_recruitings, theme: 'bootstrap-5' %></div>
+  <% else %>
+    <h3>募集をしていません</h3>
+  <% end %>
 </div>

@@ -1,21 +1,14 @@
 <div class='user_container'>
   <%= render 'info', {user: @user, areas: @areas} %>
-
-  <% if @user.name != "guestuser" %>
-
-    <div class='followbtn'>
-      <%= render 'public/relationships/btn', {user: @user} %>
-    </div>
-
-      <%=link_to "いいねした募集", favorites_user_path(@user), class: "fav_recruiting" %>
-
 </div>
-    <div class="index_recruitings">
-      <% if @user_recruitings.exists? %>
-        <div class="recruitings_body"><%= render 'public/recruitings/list', recruitings: @user_recruitings %></div>
-        <div class="recruitings_page"><%= paginate @user_recruitings, theme: 'bootstrap-5' %></div>
-      <% else %>
-        <h3>募集をしていません</h3>
-      <% end %>
-    </div>
-  <% end %>
+
+<% if @user.name != "guestuser" %>
+  <div class="index_recruitings">
+    <% if @user_recruitings.exists? %>
+      <div class="recruitings_body"><%= render 'public/recruitings/list', recruitings: @user_recruitings %></div>
+      <div class="recruitings_page"><%= paginate @user_recruitings, theme: 'bootstrap-5' %></div>
+    <% else %>
+      <h3>募集をしていません</h3>
+    <% end %>
+  </div>
+<% end %>

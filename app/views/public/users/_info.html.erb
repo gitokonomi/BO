@@ -1,28 +1,35 @@
 <div class="detail">
   <%= image_tag user.get_profile_image(80,80), class: "detail__image" %>
+  
   <div class="detail__info">
     <div class="user_name"><%= user.name %></div>
     <% if current_user == user %>
       <div class="user_email"><%= user.email %></div>
-  </div>
-      <div class="detail__edit"><%= link_to edit_user_path(user), class: "user_edit_btn" do %>プロフィ－ル編集<% end %></div>
     <% end %>
+  </div>
+  
+  <% if current_user == user %>
+    <div class="detail__edit"><%= link_to edit_user_path(user), class: "user_edit_btn" do %>プロフィ－ル編集<% end %></div>
+  <% end %>
+  <% if user.name != "guestuser" %>
+    <div class='followbtn'><%= render 'public/relationships/btn', {user: user} %></div>
+  <% end %>
 </div>
 
-<div class="user_intro">
-  <%= simple_format(user.introduction) %>
-</div>
+<div class="user_intro"><%= simple_format(user.introduction) %></div>
 
 <% if current_user == user %>
-  <div id="area">
-  <% if areas.exists? %>
-    <% areas.each do |area| %>
-      <div class="area__user"><i class="fa-solid fa-location-dot"></i> <%= area.prefecture.name %></div>
+  <div class="area">
+    <% if areas.exists? %>
+      <% areas.each do |area| %>
+        <div class="area__user"><i class="fa-solid fa-location-dot"></i> <%= area.prefecture.name %></div>
+      <% end %>
     <% end %>
-  <% end %>
   </div>
+<% end %>
 
-  <div id="follow">
+<% if current_user == user %>
+  <div class="follow">
     <div class="following_counts">
       <%= link_to user_followings_path(user) do %>
         <%= user.followings.count %> フォロー中
@@ -35,4 +42,10 @@
       <% end %>
     </div>
   </div>
+<% end %>
+
+
+
+<% if user.name != "guestuser" %>
+  <div><%= link_to "いいねした募集", favorites_user_path(user), class: "fav_recruiting" %></div>
 <% end %>

@@ -1,26 +1,47 @@
-<%= image_tag user.get_profile_image(100,100) %>
-<%= user.name %>
-<%= user.introduction %>
-<%= user.email %>
+<div class="detail">
+  <%= image_tag user.get_profile_image(80,80), class: "detail__image" %>
+  <div class="detail__info">
+    <div class="user_name"><%= user.name %></div>
+    <% if current_user == user %>
+      <div class="user_email"><%= user.email %></div>
+  </div>
+      <div class="detail__edit"><%= link_to edit_admin_user_path(user), class: "user_edit_btn" do %>プロフィ－ル編集<% end %></div>
+    <% end %>
+</div>
+
+<div class="user_intro">
+  <%= simple_format(user.introduction) %>
+</div>
+
+<% if current_user == user %>
+  <div class="area">
+  <% if areas.exists? %>
+    <% areas.each do |area| %>
+      <div class="area__user"><i class="fa-solid fa-location-dot"></i> <%= area.prefecture.name %></div>
+    <% end %>
+  <% end %>
+  </div>
+
+  <div class="follow">
+    <div class="following_counts">
+      <%= link_to admin_user_followings_path(user) do %>
+        <%= user.followings.count %> フォロー中
+      <% end %>
+    </div>
+
+    <div class="follower_counts">
+      <%= link_to admin_user_followers_path(user) do %>
+        <%= user.followers.count %> フォロワー
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
+
+
 <% if user.is_deleted == false %>
   <p>有効</p>
 <% else %>
   <p>退会済</p>
 <% end %>
-<% unless areas.exists? %>
-  <% areas.each do |area| %>
-    <%= area.prefecture.name %>
-  <% end %>
-<% end %>
-
-<%= link_to admin_user_followings_path(user) do %>
-  <p>フォロー中</p>
-  <%= user.followings.count %>
-<% end %>
-<%= link_to admin_user_followers_path(user) do %>
-  <p>フォロワー</p>
-  <%= user.followers.count %>
-<% end %>
-
-<%= link_to "プロフィール編集", edit_admin_user_path(user), class: "btn btn-info" %>
-
