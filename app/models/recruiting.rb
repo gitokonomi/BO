@@ -6,11 +6,11 @@ class Recruiting < ApplicationRecord
   has_many :recruiting_comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 20 }
   validates :date, presence: true
-  validates :place, presence: true
+  validates :place, presence: true, length: { maximum: 20 }
   validates :deadline, presence: true
-  validates :body, presence: true
+  validates :body, presence: true, length: { maximum: 150 }
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

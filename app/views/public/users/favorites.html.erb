@@ -1,10 +1,21 @@
-<div class="container">
-  <% unless @favorite_recruitings.present? %>
-    <h3>いいねした募集はまだありません</h3>
-  <% else %>
-
-    <h3><<興味あり募集一覧>></h3>
+<div class="container mt-3">
+  <div class="row mt-3">
+    <%= link_to user_path(@user) do %>
+      <i class="fa-solid fa-arrow-left fa-2x"></i>
+    <% end %>
+  </div>
+  
+  <div class="row">
+    <% unless @favorite_recruitings.present? %>
+      <h3>いいねした募集はまだありません</h3>
+    <% else %>
+  </div>
+  
+  <div class="row">
+    <h3 class="marker_blue">いいねした募集一覧</h3>
+  </div>
     <%= render "public/recruitings/list",recruitings: @favorite_recruitings %>
-
-  <% end %>
+  
+    <% end %>
+  </div>
 </div>

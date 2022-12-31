@@ -18,7 +18,7 @@ class Public::RecruitingsController < ApplicationController
 
   def index
     @recruiting = Recruiting.new
-    @recruitings = Recruiting.all
+    @recruitings = Recruiting.page(params[:page]).per(12)
   end
 
   def show
