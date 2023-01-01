@@ -1,20 +1,21 @@
-<div class="container">
-  
-  <div class="row mt-3">
+<div class="users_index">
+
+  <div class="row my-3">
     <%= link_to admin_user_path(@user) do %>
       <i class="fa-solid fa-arrow-left fa-2x"></i>
     <% end %>
   </div>
   <div class="row">
-    <h2><<フォロワー>></h2>
+    <h3 class="marker_blue">フォロワー</h3>
   </div>
-      
-  <div class="row">
-    <% if @users.exists? %>
-      <%= render 'admin/users/index', users: @users %>
-    <% else %>
-      <p>ユーザーはいません</p>
-    <% end %>
+
+  <% if @users.exists? %>
+    <%= render 'admin/users/index', users: @users %>
+  <% else %>
+    <p>ユーザーはいません</p>
+  <% end %>
+
+  <div class="paginate">
+    <%= paginate @users, theme: 'bootstrap-5' %>
   </div>
-  
 </div>

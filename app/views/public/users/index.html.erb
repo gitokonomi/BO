@@ -1,12 +1,12 @@
 <div class="users_index">
 
-  <div class='row my-3'>
+  <div class="row my-3">
     <h3 class="marker_blue">ユーザー一覧</h3>
   </div>
 
   <%= render 'index', users: @users %>
 
-  <div class="pagenate">
+  <div class="paginate">
     <%= paginate @users, theme: 'bootstrap-5' %>
   </div>
 

@@ -18,7 +18,7 @@
     <div class="recruitings_body">
       <%= render "public/recruitings/list",recruitings: @favorite_recruitings %>
     </div>
-    <div class="pagenate">
+    <div class="paginate">
       <%= paginate @favorite_recruitings, theme: 'bootstrap-5' %>
     </div>
   <% end %>

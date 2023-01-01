@@ -2,9 +2,6 @@ class Public::RecruitingsController < ApplicationController
   before_action :authenticate_user!, only: [:new,:show,:edit]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
-  def new
-  end
-
   def create
     @recruiting = Recruiting.new(recruiting_params)
     @recruiting.user_id = current_user.id

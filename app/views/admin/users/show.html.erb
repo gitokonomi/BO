@@ -1,12 +1,17 @@
 <div class='user_container'>
   <%= render 'info', {user: @user, areas: @areas} %>
   <%= link_to "いいねした募集", favorites_user_path(@user), class: "fav_recruiting" %>
+    <% if @user.is_deleted == false %>
+      ユーザーステータス：<span class="text-success"><strong>有効</strong></span>
+    <% else %>
+      ユーザーステータス：<span class="text-danger"><strong>退会済</strong></span>
+    <% end %>
 </div>
-  
+
 <div class="index_recruitings">
   <% if @user_recruitings.exists? %>
     <div class="recruitings_body"><%= render 'admin/recruitings/list', recruitings: @user_recruitings %></div>
-    <div class="recruitings_page"><#= paginate @user_recruitings, theme: 'bootstrap-5' %></div>
+    <div class="paginate"><%= paginate @user_recruitings, theme: 'bootstrap-5' %></div>
   <% else %>
     <h3>募集をしていません</h3>
   <% end %>

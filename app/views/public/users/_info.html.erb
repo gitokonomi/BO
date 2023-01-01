@@ -28,7 +28,6 @@
   </div>
 <% end %>
 
-
 <div class="follow">
   <div class="following_counts">
     <%= link_to user_followings_path(user) do %>
@@ -42,9 +41,6 @@
     <% end %>
   </div>
 </div>
-
-
-
 
 <% if user.name != "guestuser" %>
   <div><%= link_to "いいねした募集", favorites_user_path(user), class: "fav_recruiting" %></div>
