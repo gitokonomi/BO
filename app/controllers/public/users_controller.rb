@@ -34,7 +34,7 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     favorites= Favorite.where(user_id: @user.id).pluck(:recruiting_id)
-    @favorite_recruitings = Recruiting.find(favorites).page(params[:page]).per(12)
+    @favorite_recruitings = Kaminari.paginate_array(Recruiting.find(favorites)).page(params[:page]).per(12)
   end
 
 
