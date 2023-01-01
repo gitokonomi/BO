@@ -6,10 +6,8 @@
 
   <%= render 'index', users: @users %>
 
-  <!--<div class="row">-->
-    <div class="users_page">
-      <%= paginate @users, theme: 'bootstrap-5' %>
-    </div>
-  <!--</div>-->
+  <div class="pagenate">
+    <%= paginate @users, theme: 'bootstrap-5' %>
+  </div>
 
 </div>

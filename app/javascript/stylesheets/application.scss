@@ -131,11 +131,6 @@
   flex-wrap: wrap;
   list-style: none;
 }
-.recruitings_page {
-  display: flex;
-  padding: 20px;
-  justify-content: center;
-}
 
 
 // 募集一覧
@@ -339,27 +334,8 @@
 .info__follow {
   margin: 10px 10px 10px auto;
 }
-.users_page {
-  display: flex;
-  padding: 20px;
-  justify-content: center;
-}
 ////////////////////ユーザー一覧ここまで////////////////////
 
-// ユーザーアイコン
-.icon_circle_70 {
-  border-radius: 50%;
-  border: 6px solid rgba(117,206,250,0.4);
-  width: 70px;
-  height: 70px;
-  object-fit:cover;
-}
-
-// コメント機能
-.comment_reply {
-  margin: 10px;
-  background: linear-gradient(to right, #fefedf 0%, #f0f8ff 100%);
-}
 
 ////////////////////マッチング完了スイッチングボタン//////////
 .switch__label {
@@ -465,4 +441,33 @@
   background: linear-gradient(transparent 75%, #c1e0ff 75%);
   font-weight: bold;
   border-radius: 3px;
+}
+
+// ユーザーアイコン
+.icon_circle_70 {
+  border-radius: 50%;
+  border: 6px solid rgba(117,206,250,0.4);
+  width: 70px;
+  height: 70px;
+  object-fit:cover;
+}
+
+.icon_mini {
+  border-radius: 50%;
+  border: 3px solid rgba(117,206,250,0.4);
+  width: 40px;
+  height: 40px;
+  object-fit:cover;
+}
+
+// コメント機能
+.comment_reply {
+  margin: 10px;
+  background: linear-gradient(to right, #fefedf 0%, #f0f8ff 100%);
+}
+
+.pagenate {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
 }

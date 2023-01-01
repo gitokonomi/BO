@@ -1,31 +1,26 @@
   <% users.each do |user| %>
-  <div class="users_container">
-    <div class="users">
-      <%= link_to user_path(user) do %>
-        <%= image_tag user.get_profile_image(70,70), class: "icon_circle_70" %>
-      <% end %>
-    </div>
-    
-    <div class="info">
-      <div class="info__name">
-        <%= link_to user.name, user_path(user) %>
-      </div>
-      <div class="info__intro">
-        <% if user.introduction.nil? %>
-          <%= user.introduction %>
-        <% else%>
-          <%= user.introduction.truncate(53) %>
+    <div class="users_container">
+      <div class="users">
+        <%= link_to user_path(user) do %>
+          <%= image_tag user.get_profile_image(70,70), class: "icon_circle_70" %>
         <% end %>
       </div>
-      <!--<div class="info__follow">-->
-      <!--  <%#= render "public/relationships/btn", user: user %>-->
-      <!--</div>-->
+      
+      <div class="info">
+        <div class="info__name">
+          <%= link_to user.name, user_path(user) %>
+        </div>
+        <div class="info__intro">
+          <% if user.introduction.nil? %>
+            <%= user.introduction %>
+          <% else%>
+            <%= user.introduction.truncate(53) %>
+          <% end %>
+        </div>
+      </div>
+      
+      <div class="info__follow">
+        <%= render "public/relationships/btn", user: user %>
+      </div>
     </div>
-    
-    
-    
-    <div class="info__follow">
-      <%= render "public/relationships/btn", user: user %>
-    </div>
-  </div>
   <% end %>

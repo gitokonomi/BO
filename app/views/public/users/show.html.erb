@@ -6,7 +6,7 @@
   <div class="index_recruitings">
     <% if @user_recruitings.exists? %>
       <div class="recruitings_body"><%= render 'public/recruitings/list', recruitings: @user_recruitings %></div>
-      <div class="recruitings_page"><%= paginate @user_recruitings, theme: 'bootstrap-5' %></div>
+      <div class="pagenate"><%= paginate @user_recruitings, theme: 'bootstrap-5' %></div>
     <% else %>
       <h3>募集をしていません</h3>
     <% end %>

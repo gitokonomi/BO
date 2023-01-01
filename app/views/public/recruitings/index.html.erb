@@ -1,6 +1,6 @@
 <!--ゲストユーザーは募集投稿機能は見えないように-->
 <div class="index_container">
-  
+
   <% if user_signed_in? && current_user.name != "guestuser" %>
     <div class='index_form'>
       <p>内容を入力して</br>募集してみよう！</p>
@@ -10,7 +10,7 @@
 
   <div class="index_recruitings">
     <div class="recruitings_body"><%= render "list", recruitings: @recruitings %></div>
-    <div class="recruitings_page"><%= paginate @recruitings, theme: 'bootstrap-5' %></div>
+    <div class="pagenate"><%= paginate @recruitings, theme: 'bootstrap-5' %></div>
   </div>
 
 </div>
