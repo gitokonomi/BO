@@ -203,14 +203,7 @@
   text-align: right;
 }
 
-// ユーザーアイコン
-.list_icon {
-  border-radius: 50%;
-  border: 6px solid rgba(117,206,250,0.4);
-  width: 70px;
-  height: 70px;
-  object-fit:cover;
-}
+
 ////////////////////募集一覧ここまで////////////////////
 
 
@@ -320,6 +313,47 @@
 
 ////////////////////ユーザー詳細ここまで////////////////////
 
+////////////////////ユーザー一覧////////////////////
+.users_index {
+  margin: 0 10%;
+}
+.users_container {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  border-bottom: solid 1px #e9ecef;;
+}
+.users {
+  padding: 15px;
+}
+.info {
+  padding: 15px;
+}
+.info__name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.info__intro {
+}
+.info__follow {
+  margin: 10px 10px 10px auto;
+}
+.users_page {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+}
+////////////////////ユーザー一覧ここまで////////////////////
+
+// ユーザーアイコン
+.icon_circle_70 {
+  border-radius: 50%;
+  border: 6px solid rgba(117,206,250,0.4);
+  width: 70px;
+  height: 70px;
+  object-fit:cover;
+}
 
 // コメント機能
 .comment_reply {
