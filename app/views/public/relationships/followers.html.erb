@@ -1,4 +1,4 @@
-<div class="container">
+<div class="users_index">
 
   <div class="row my-3">
     <%= link_to user_path(@user) do %>
@@ -9,12 +9,13 @@
     <h3 class="marker_blue">フォロワー</h3>
   </div>
 
-  <div class="row">
-    <% if @users.exists? %>
-      <%= render 'public/users/index', users: @users %>
-    <% else %>
-      <p>ユーザーはいません</p>
-    <% end %>
-  </div>
+  <% if @users.exists? %>
+    <%= render 'public/users/index', users: @users %>
+  <% else %>
+    <p>ユーザーはいません</p>
+  <% end %>
 
+  <div class="pagenate">
+    <%= paginate @users, theme: 'bootstrap-5' %>
+  </div>
 </div>

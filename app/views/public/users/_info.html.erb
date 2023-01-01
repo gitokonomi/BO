@@ -1,13 +1,13 @@
 <div class="detail">
   <%= image_tag user.get_profile_image(80,80), class: "detail__image" %>
-  
+
   <div class="detail__info">
     <div class="user_name"><%= user.name %></div>
     <% if current_user == user %>
       <div class="user_email"><%= user.email %></div>
     <% end %>
   </div>
-  
+
   <% if current_user == user %>
     <div class="detail__edit"><%= link_to edit_user_path(user), class: "user_edit_btn" do %>プロフィ－ル編集<% end %></div>
   <% end %>
@@ -28,21 +28,21 @@
   </div>
 <% end %>
 
-<% if current_user == user %>
-  <div class="follow">
-    <div class="following_counts">
-      <%= link_to user_followings_path(user) do %>
-        <%= user.followings.count %> フォロー中
-      <% end %>
-    </div>
 
-    <div class="follower_counts">
-      <%= link_to user_followers_path(user) do %>
-        <%= user.followers.count %> フォロワー
-      <% end %>
-    </div>
+<div class="follow">
+  <div class="following_counts">
+    <%= link_to user_followings_path(user) do %>
+      <%= user.followings.count %> フォロー中
+    <% end %>
   </div>
-<% end %>
+
+  <div class="follower_counts">
+    <%= link_to user_followers_path(user) do %>
+      <%= user.followers.count %> フォロワー
+    <% end %>
+  </div>
+</div>
+
 
 
 
