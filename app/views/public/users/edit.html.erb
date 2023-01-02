@@ -1,44 +1,46 @@
-<div class='container'>
+<div class="edit_container">
   <%= render 'layouts/errors', obj: @user %>
-  <div class='row'>
-    <div class ='col'>
-      <h2>マイページ編集</h2>
-      <%= form_with model:@user, local:true do |f| %>
-        <div class="form-group">
-          <%= f.label :ユーザーネーム %>
-          <%= f.text_field :name, class: "form-control name" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :メールアドレス %>
-          <%= f.text_field :email, class: "form-control email" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :プロフィール画像 %>
-          <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :自己紹介 %>
-          <%= f.text_area :introduction, class: "form-control introduction" %>
-        </div>
-        <div class="form-group">
-          <%= f.submit "変更を保存する", class: 'btn btn-secondary' %>
-        </div>
-      <% end %>
-    </div>
+  <div class="row my-3">
+    <h3 class="marker_blue">マイページ編集</h3>
   </div>
+  
+  <div class="row">
+    <%= form_with model:@user, local:true do |f| %>
+      <div class="form-group">
+        <%= f.label :ユーザーネーム %>
+        <%= f.text_field :name, class: "form-control name" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :メールアドレス %>
+        <%= f.text_field :email, class: "form-control email" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :プロフィール画像 %>
+        <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :自己紹介 %>
+        <%= f.text_area :introduction, class: "form-control introduction", size: "38x10" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "変更を保存する", class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+  </div>
+  <hr>
 
-  <div class='row'>
-    <div class ='col'>
-      <h3>登録中エリア一覧</h3>
-      <% if @areas.present? %>
-        <% @areas.each do |area| %>
-          <%= area.prefecture.name %>
-          <%= link_to "削除", area_path(area.id, area), method: :delete, class: "btn btn-danger" %>
-        <% end %>  
-      <% else %>
-        <p>現在登録がありません</p>
+  <div class="row my-3">
+    <h3 class="marker_blue">登録中エリア一覧</h3>
+  </div>
+  <div>
+    <% if @areas.present? %>
+      <% @areas.each do |area| %>
+        <%= area.prefecture.name %>
+        <%= link_to "削除", area_path(area.id, area), method: :delete, class: "btn btn-danger" %>
       <% end %>
-    </div>
+    <% else %>
+      <p>現在登録がありません</p>
+    <% end %>
   </div>
 
   <div class='row'>
@@ -50,5 +52,5 @@
       <% end %>
     </div>
   </div>
-  
+
 </div>
